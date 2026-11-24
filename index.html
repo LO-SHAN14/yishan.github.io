@@ -32,7 +32,6 @@
             line-height: 1.8;
         }
 
-        /* 頂部標題與三分頁導覽（不使用 sticky，避免平板/預覽框圖層遮擋點擊） */
         .header-bar {
             background-color: var(--green-dark);
             color: #FFFFFF;
@@ -72,7 +71,6 @@
             font-weight: bold;
             cursor: pointer;
             text-align: center;
-            text-decoration: none;
         }
 
         .tab-btn:hover {
@@ -84,7 +82,6 @@
             color: var(--green-dark);
         }
 
-        /* 主內容容器 */
         .main-wrap {
             max-width: 900px;
             margin: 22px auto 60px;
@@ -99,7 +96,6 @@
             display: block;
         }
 
-        /* 任務檢核表 */
         .checklist {
             background-color: var(--green-box-bg);
             border-left: 4px solid var(--green-dark);
@@ -123,7 +119,6 @@
             accent-color: var(--green-dark);
         }
 
-        /* 卡片區塊 */
         .card-box {
             background: var(--card-bg);
             border: 1px solid #E5E2D9;
@@ -141,7 +136,6 @@
             padding-bottom: 8px;
         }
 
-        /* 導讀折疊項目 */
         .guide-item {
             border: 1px solid #E2DFD5;
             border-radius: 10px;
@@ -180,7 +174,6 @@
             display: block;
         }
 
-        /* 原典精選（仿截圖極簡排版） */
         .lesson-title {
             font-size: 1.75rem;
             font-weight: bold;
@@ -208,4 +201,232 @@
             padding: 20px 22px;
             margin-bottom: 16px;
             font-size: 1.38rem;
-            line-
+            line-height: 2.35;
+            color: #1F2623;
+            font-family: "Noto Serif TC", "PMingLiU", serif;
+        }
+
+        .classical-box p {
+            margin: 0 0 10px 0;
+        }
+
+        .classical-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .kw {
+            display: inline-block;
+            border: 1.5px solid var(--green-border);
+            background-color: rgba(255, 255, 255, 0.7);
+            color: var(--green-dark);
+            border-radius: 8px;
+            padding: 0 7px;
+            margin: 0 2px;
+            line-height: 1.55;
+            cursor: pointer;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        .kw:hover {
+            background-color: #DFECE5;
+        }
+
+        .kw.selected {
+            background-color: var(--green-dark);
+            color: #FFFFFF;
+            border-color: var(--green-dark);
+        }
+
+        .gloss-bar {
+            background-color: var(--yellow-bg);
+            color: var(--yellow-text);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 1.02rem;
+            margin-bottom: 16px;
+            min-height: 52px;
+        }
+
+        .gloss-bar strong {
+            color: var(--green-dark);
+            margin-right: 6px;
+        }
+
+        .trans-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--green-dark);
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 6px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trans-content {
+            display: none;
+            margin-top: 10px;
+            background-color: #F8F7F2;
+            border: 1px solid #E2DFD5;
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .trans-content.open {
+            display: block;
+        }
+
+        .trans-content p {
+            margin: 0 0 10px 0;
+        }
+
+        .trans-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .next-row {
+            text-align: right;
+            margin-top: 16px;
+        }
+
+        .next-btn {
+            background-color: var(--green-dark);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .next-btn:hover {
+            opacity: 0.92;
+        }
+
+        .quiz-item {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #ECE9E0;
+        }
+
+        .quiz-q {
+            font-weight: bold;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        .quiz-options label {
+            display: block;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border: 1.5px solid #DCD9CE;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .quiz-options label:hover {
+            background-color: var(--green-box-bg);
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.15);
+            accent-color: var(--green-dark);
+        }
+
+        .exp-box {
+            display: none;
+            margin-top: 10px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .exp-box.right {
+            display: block;
+            background: #E5F5EC;
+            color: #1A5236;
+            border: 1px solid #A8D8BE;
+        }
+
+        .exp-box.wrong {
+            display: block;
+            background: #FDECEA;
+            color: #8A1F17;
+            border: 1px solid #F5B7B1;
+        }
+
+        .submit-quiz-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-orange);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .score-box {
+            display: none;
+            background-color: var(--green-dark);
+            color: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 600px) {
+            .classical-box {
+                font-size: 1.2rem;
+                padding: 16px;
+            }
+            .card-box {
+                padding: 20px 16px;
+            }
+            .tab-btn {
+                font-size: 0.9rem;
+                padding: 11px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <h1>六朝名士畫廊——《世說新語》選</h1>
+    <p>八年級國文自學選文一 ｜ 平板互動自學任務</p>
+    <div class="tab-bar">
+        <button type="button" class="tab-btn active" id="tabBtn1" onclick="openTab(1)">① 經典導讀 (5分)</button>
+        <button type="button" class="tab-btn" id="tabBtn2" onclick="openTab(2)">② 點詞語譯與抄寫 (25分)</button>
+        <button type="button" class="tab-btn" id="tabBtn3" onclick="openTab(3)">③ 文意小測驗 10題 (15分)</button>
+    </div>
+</div>
+
+<div class="main-wrap">
+
+    <div class="checklist">
+        <strong>📌 本節課自學任務檢核表（完成後可自行打勾）：</strong>
+        <label><input type="checkbox"> 任務一：瀏覽「① 經典導讀」，認識《世說新語》與魏晉名士風貌。</label>
+        <label><input type="checkbox"> 任務二：點選「② 點詞語譯」中的綠色詞語框看解釋，並將分段白話抄寫在課本 P.169、P.171。</label>
+        <label><input type="checkbox"> 任務三：完成「③ 文意小測驗」共 10 題（每題 10 分），檢視錯題解析。</label>
+    </div>
+
+    <!-- 分頁 1：經典導讀 -->
+    <div class="page-panel active" id="panel1">
+        <div class="card-box">
+            <h2>《世說新語》小檔案（課本 P.166）</h2>
+            <ul style="margin: 0; padding-left: 22px;">
+                <li><strong>文體類別：</strong>漢魏六朝盛行筆記小說，分為「志怪」（如《搜神記》）與<strong>「志人」</strong>兩類，本書是<strong>志人小說</strong>的代表。</li>
+                <li><strong>編撰作者：</strong>原名《世說》，由南朝劉宋皇族<strong>劉義慶</strong>召集文士合力編撰。</li>
+                <li><strong>內容特色：</strong>記載東漢至東晉名士的言行與軼聞，全書共<strong>三十六類</strong>，文字簡潔精鍊，善用對
