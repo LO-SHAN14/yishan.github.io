@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八上國文自學選文一：六朝名士畫廊——《世說新語》選（互動字詞版）</title>
+    <title>八上國文自學選文一：六朝名士畫廊——《世說新語》選</title>
     <style>
         :root {
             --bg-color: #F7F4EB;
@@ -20,6 +20,7 @@
         * {
             box-sizing: border-box;
             font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+            -webkit-tap-highlight-color: rgba(44, 94, 79, 0.15);
         }
 
         body {
@@ -67,12 +68,12 @@
             padding: 11px 8px;
             border: none;
             border-radius: 10px 10px 0 0;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.22);
             color: #FFFFFF;
             font-size: 0.98rem;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
+            touch-action: manipulation;
         }
 
         .tab-btn.active {
@@ -88,16 +89,10 @@
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.25s ease;
         }
 
         .tab-content.active {
             display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .card {
@@ -152,7 +147,6 @@
             accent-color: var(--primary);
         }
 
-        /* 導讀手風琴 */
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 10px;
@@ -169,6 +163,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            touch-action: manipulation;
         }
 
         .accordion-body {
@@ -182,7 +177,6 @@
             display: block;
         }
 
-        /* 點詞互動區 */
         .token-sentence-card {
             border: 1px solid #E2DDD0;
             border-radius: 12px;
@@ -225,21 +219,13 @@
             font-weight: bold;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.15s ease;
-            user-select: none;
-        }
-
-        .word-chip:hover {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            transform: translateY(-1px);
+            touch-action: manipulation;
         }
 
         .word-chip.active {
             background-color: var(--accent);
             border-color: var(--accent);
             color: #FFFFFF;
-            box-shadow: 0 2px 6px rgba(184, 93, 59, 0.3);
         }
 
         .punct-chip {
@@ -249,7 +235,6 @@
             padding: 0 2px;
         }
 
-        /* 單詞即時解釋框 */
         .word-detail-box {
             display: none;
             background-color: var(--accent-light);
@@ -261,15 +246,15 @@
             font-size: 0.98rem;
         }
 
+        .word-detail-box.show {
+            display: block;
+        }
+
         .word-detail-title {
             font-weight: bold;
             color: var(--accent);
             font-size: 1.05rem;
             margin-bottom: 4px;
-        }
-
-        .word-detail-meaning {
-            color: var(--text-main);
         }
 
         .toggle-trans-btn {
@@ -280,6 +265,7 @@
             border-radius: 6px;
             font-size: 0.88rem;
             cursor: pointer;
+            touch-action: manipulation;
         }
 
         .toggle-trans-btn.shown {
@@ -295,6 +281,10 @@
             border: 1px solid #C8DDD5;
             color: #1E463A;
             font-weight: bold;
+        }
+
+        .full-translation-box.show {
+            display: block;
         }
 
         .action-bar {
@@ -315,9 +305,9 @@
             font-weight: bold;
             font-size: 0.9rem;
             cursor: pointer;
+            touch-action: manipulation;
         }
 
-        /* 測驗區 */
         .quiz-item {
             margin-bottom: 22px;
             padding-bottom: 16px;
@@ -337,11 +327,7 @@
             border: 1.5px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .quiz-options label:hover {
-            background-color: var(--primary-light);
+            touch-action: manipulation;
         }
 
         .quiz-options input[type="radio"] {
@@ -359,12 +345,14 @@
         }
 
         .explanation.correct {
+            display: block;
             background-color: #E3F5E8;
             color: #1E5631;
             border: 1px solid #A3D9B1;
         }
 
         .explanation.wrong {
+            display: block;
             background-color: #FDECEA;
             color: #8A1F17;
             border: 1px solid #F5B7B1;
@@ -382,6 +370,7 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 20px;
+            touch-action: manipulation;
         }
 
         .score-banner {
@@ -392,6 +381,10 @@
             border-radius: 12px;
             text-align: center;
             margin-bottom: 24px;
+        }
+
+        .score-banner.show {
+            display: block;
         }
 
         .next-step-btn {
@@ -405,6 +398,7 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
+            touch-action: manipulation;
         }
     </style>
 </head>
@@ -413,14 +407,14 @@
 <header>
     <h1>六朝名士畫廊——《世說新語》選</h1>
     <p>八年級國文自學選文一 ｜ 單詞點選語譯＋10題隨堂測驗</p>
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('tab1', this)">① 經典導讀 (5分)</button>
-        <button class="tab-btn" onclick="switchTab('tab2', this)">② 點詞語譯與抄寫 (25分)</button>
-        <button class="tab-btn" onclick="switchTab('tab3', this)">③ 文意小測驗 10題 (15分)</button>
+    <div class="nav-tabs" id="navTabs">
+        <button type="button" class="tab-btn active" data-tab="tab1">① 經典導讀 (5分)</button>
+        <button type="button" class="tab-btn" data-tab="tab2">② 點詞語譯與抄寫 (25分)</button>
+        <button type="button" class="tab-btn" data-tab="tab3">③ 文意小測驗 10題 (15分)</button>
     </div>
 </header>
 
-<main>
+<main id="appMain">
     <div class="checklist">
         <strong>📌 本節課自學任務檢核表：</strong>
         <label><input type="checkbox"> 任務一：瀏覽「經典導讀」，掌握《世說新語》與魏晉名士風貌。</label>
@@ -442,7 +436,7 @@
         <div class="card">
             <h2><span class="badge">課本 P.167-172</span>六朝名士四大風貌（點擊展開）</h2>
             <div class="accordion-item open">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
                     <span>一、美男當道的世代（容止篇）</span>
                     <span>▼</span>
                 </div>
@@ -454,7 +448,7 @@
             </div>
 
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
                     <span>二、舉止瀟灑的風采（排調篇、雅量篇）</span>
                     <span>▼</span>
                 </div>
@@ -465,7 +459,7 @@
             </div>
 
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
                     <span>三、個人特質的圖象（儉嗇篇、忿狷篇、賞譽篇）</span>
                     <span>▼</span>
                 </div>
@@ -476,7 +470,7 @@
             </div>
 
             <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
                     <span>四、靈敏巧對的機智（言語篇）</span>
                     <span>▼</span>
                 </div>
@@ -487,7 +481,7 @@
             </div>
 
             <div style="text-align: right;">
-                <button class="next-step-btn" onclick="switchTab('tab2', document.querySelectorAll('.tab-btn')[1])">下一步：前往點詞語譯與抄寫 ➔</button>
+                <button type="button" class="next-step-btn" data-goto="tab2">下一步：前往點詞語譯與抄寫 ➔</button>
             </div>
         </div>
     </div>
@@ -499,8 +493,8 @@
             <div class="action-bar">
                 <span style="color: var(--text-muted); font-size: 0.92rem;">👆 請<strong>點選下方有框線的單詞</strong>查看解釋，完成後將整句翻譯抄寫在課本 P.169。</span>
                 <div>
-                    <button class="btn-outline" onclick="toggleAllFullTrans('sec1', true)">全部顯示整句翻譯</button>
-                    <button class="btn-outline" onclick="toggleAllFullTrans('sec1', false)">全部隱藏</button>
+                    <button type="button" class="btn-outline" data-batch-sec="sec1" data-show="1">全部顯示整句翻譯</button>
+                    <button type="button" class="btn-outline" data-batch-sec="sec1" data-show="0">全部隱藏</button>
                 </div>
             </div>
             <div id="sec1"></div>
@@ -511,14 +505,14 @@
             <div class="action-bar">
                 <span style="color: var(--text-muted); font-size: 0.92rem;">👆 請<strong>點選下方有框線的單詞</strong>查看解釋，留意誇張動作並將翻譯抄寫在課本 P.171。</span>
                 <div>
-                    <button class="btn-outline" onclick="toggleAllFullTrans('sec2', true)">全部顯示整句翻譯</button>
-                    <button class="btn-outline" onclick="toggleAllFullTrans('sec2', false)">全部隱藏</button>
+                    <button type="button" class="btn-outline" data-batch-sec="sec2" data-show="1">全部顯示整句翻譯</button>
+                    <button type="button" class="btn-outline" data-batch-sec="sec2" data-show="0">全部隱藏</button>
                 </div>
             </div>
             <div id="sec2"></div>
 
             <div style="text-align: right;">
-                <button class="next-step-btn" onclick="switchTab('tab3', document.querySelectorAll('.tab-btn')[2])">抄寫完成！前往 10 題隨堂小測驗 ➔</button>
+                <button type="button" class="next-step-btn" data-goto="tab3">抄寫完成！前往 10 題隨堂小測驗 ➔</button>
             </div>
         </div>
     </div>
@@ -539,7 +533,7 @@
 </main>
 
 <script>
-    // 單詞互動資料（包含逐句分詞與逐詞解釋）
+(function() {
     const classicalSections = {
         sec1: [
             {
@@ -692,4 +686,71 @@
                     { word: "曰", reading: "ㄩㄝ", meaning: "說。" },
                     { word: "：", isPunct: true },
                     { word: "「", isPunct: true },
-                    { word: "使安期有此性", reading: "ㄕˇ ㄢ ㄑㄧˊ ㄧㄡˇ ㄘˇ ㄒㄧㄥˋ", meaning: "假使王安期有這種急躁脾氣。「使」是假使；
+                    { word: "使安期有此性", reading: "ㄕˇ ㄢ ㄑㄧˊ ㄧㄡˇ ㄘˇ ㄒㄧㄥˋ", meaning: "假使王安期有這種急躁脾氣。「使」是假使；「安期」是王藍田的父親王承。" },
+                    { word: "，", isPunct: true },
+                    { word: "猶當無一豪可論", reading: "ㄧㄡˊ ㄉㄤ ㄨˊ ㄧˋ ㄏㄠˊ ㄎㄜˇ ㄌㄨㄣˋ", meaning: "尚且沒有一絲一毫可取之處。「猶」是尚且；「一豪」同「一毫」，比喻極微小。" },
+                    { word: "，", isPunct: true },
+                    { word: "況藍田耶", reading: "ㄎㄨㄤˋ ㄌㄢˊ ㄊㄧㄢˊ ㄧㄝˊ", meaning: "更何況是王藍田呢？「況」是何況；「耶」同「邪」，語末疑問助詞。" },
+                    { word: "？", isPunct: true },
+                    { word: "」", isPunct: true }
+                ],
+                fullTrans: "【整句語譯】王羲之聽說這件事後大笑說：「假使他父親王安期有這種急躁脾氣，尚且沒有一絲一毫可取之處了，更何況是王藍田呢？」"
+            }
+        ]
+    };
+
+    const quizQuestions = [
+        {
+            q: "1. 下列關於《世說新語》一書的說明，何者「錯誤」？",
+            options: [
+                "A. 屬於漢魏六朝筆記小說，是中國志人小說的代表作。",
+                "B. 由南朝劉義慶獨力撰寫完成，依朝代先後順序編排。",
+                "C. 全書分為三十六類，主要記載東漢至東晉名士言行。",
+                "D. 文字簡潔精鍊且故事趣味橫生，對後世小說影響深遠。"
+            ],
+            ans: "B",
+            exp: "正確答案為 B。《世說新語》是劉義慶召集文士「合力編撰」，且全書按「性質分類」（共三十六類），並非依朝代編排。"
+        },
+        {
+            q: "2. 郗太尉聽了門生對王家子弟的觀察後，決定將女兒嫁給王羲之，主要是欣賞他的哪種特質？",
+            options: [
+                "A. 飽讀詩書，才華洋溢。",
+                "B. 體格強健，不畏寒暑。",
+                "C. 本性率真，毫不做作。",
+                "D. 孤芳自賞，特立獨行。"
+            ],
+            ans: "C",
+            exp: "正確答案為 C。其他子弟聽聞挑女婿都拘謹莊重，唯有王羲之「坦腹臥，如不聞」，展現率真自然的本性。"
+        },
+        {
+            q: "3. 下列哪一個字詞的字音與字義配對，完全「正確」？",
+            options: [
+                "A. 以「筯」刺之：音ㄓㄨˋ，指筷子。",
+                "B. 以屐齒「跟」之：音ㄍㄣ，指跟隨。",
+                "C. 取「內」口中：音ㄋㄟˋ，指裡面。",
+                "D. 「齧」破即吐之：音ㄋㄧㄝˋ，指捏碎。"
+            ],
+            ans: "A",
+            exp: "正確答案為 A。B「跟」音ㄋㄧㄢˇ，踩踏；C「內」音ㄋㄚˋ，同「納」，放入；D「齧」音ㄋㄧㄝˋ，指「咬」破。"
+        },
+        {
+            q: "4. 文言文中常省略主語或使用代詞。關於〈坦腹東床〉的文句分析，下列何者「正確」？",
+            options: [
+                "A. 「丞相語郗信」的「信」，是指王丞相寫的回信。",
+                "B. 「任意選之」的「之」，是指東廂房裡的書法作品。",
+                "C. 「訪之，乃是逸少」的「之」，是指郗太尉的門生。",
+                "D. 「因嫁女與焉」的「焉」，是指前面提到的王逸少。"
+            ],
+            ans: "D",
+            exp: "正確答案為 D。A「信」指使者；B「之」指王家諸郎；C「之」指在東床上坦腹臥的年輕人（逸少）。"
+        },
+        {
+            q: "5. 《王藍田食雞子》一文中，作者主要是透過哪一種寫作手法來凸顯人物性格？",
+            options: [
+                "A. 透過細膩的內心獨白，剖析人物的焦慮。",
+                "B. 透過一連串誇張動作，展現人物的急躁。",
+                "C. 透過激烈的言語辯論，呈現人物的機智。",
+                "D. 透過詳實的環境描寫，襯托人物的孤獨。"
+            ],
+            ans: "B",
+            exp: "正確答案為 B。文中運用「刺、擲、跟、取、內、齧、吐」等誇張動作，將王藍田的急躁暴怒刻
