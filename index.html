@@ -1,432 +1,105 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八上國文自學選文一：六朝名士畫廊——《世說新語》選</title>
-    <style>
-        :root {
-            --bg-page: #FAF9F5;
-            --card-bg: #FFFFFF;
-            --green-dark: #1E5641;
-            --green-box-bg: #F1F6F3;
-            --green-border: #3B7A61;
-            --yellow-bg: #F6EED6;
-            --yellow-text: #4A3B18;
-            --text-main: #222222;
-            --text-sub: #4E5452;
-            --accent-orange: #B85D3B;
-        }
-
-        * {
-            box-sizing: border-box;
-            font-family: "PingFang TC", "Noto Serif TC", "Microsoft JhengHei", sans-serif;
-            -webkit-tap-highlight-color: rgba(30, 86, 65, 0.2);
-        }
-
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-        }
-
-        .header-bar {
-            background-color: var(--green-dark);
-            color: #FFFFFF;
-            padding: 20px 16px 0;
-            text-align: center;
-        }
-
-        .header-bar h1 {
-            margin: 0 0 4px 0;
-            font-size: 1.45rem;
-            letter-spacing: 0.5px;
-        }
-
-        .header-bar p {
-            margin: 0 0 16px 0;
-            font-size: 0.92rem;
-            opacity: 0.92;
-        }
-
-        .tab-bar {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .tab-btn {
-            flex: 1;
-            display: block;
-            padding: 13px 10px;
-            background-color: rgba(255, 255, 255, 0.22);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 10px 10px 0 0;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .tab-btn:hover {
-            background-color: rgba(255, 255, 255, 0.35);
-        }
-
-        .tab-btn.active {
-            background-color: var(--bg-page);
-            color: var(--green-dark);
-        }
-
-        .main-wrap {
-            max-width: 900px;
-            margin: 22px auto 60px;
-            padding: 0 16px;
-        }
-
-        .page-panel {
-            display: none;
-        }
-
-        .page-panel.active {
-            display: block;
-        }
-
-        .checklist {
-            background-color: var(--green-box-bg);
-            border-left: 4px solid var(--green-dark);
-            border-radius: 8px;
-            padding: 14px 18px;
-            margin-bottom: 22px;
-            font-size: 0.96rem;
-        }
-
-        .checklist label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 6px 0;
-            cursor: pointer;
-        }
-
-        .checklist input[type="checkbox"] {
-            width: 19px;
-            height: 19px;
-            accent-color: var(--green-dark);
-        }
-
-        .card-box {
-            background: var(--card-bg);
-            border: 1px solid #E5E2D9;
-            border-radius: 14px;
-            padding: 26px 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-
-        .card-box h2 {
-            margin: 0 0 10px 0;
-            color: var(--green-dark);
-            font-size: 1.35rem;
-            border-bottom: 2px solid var(--green-box-bg);
-            padding-bottom: 8px;
-        }
-
-        .guide-item {
-            border: 1px solid #E2DFD5;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            overflow: hidden;
-        }
-
-        .guide-btn {
-            width: 100%;
-            text-align: left;
-            background-color: #F8F7F2;
-            border: none;
-            padding: 14px 18px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: var(--green-dark);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .guide-btn:hover {
-            background-color: var(--green-box-bg);
-        }
-
-        .guide-body {
-            display: none;
-            padding: 16px 18px;
-            background-color: #FFFFFF;
-            border-top: 1px solid #E2DFD5;
-            font-size: 1rem;
-        }
-
-        .guide-body.open {
-            display: block;
-        }
-
-        .lesson-title {
-            font-size: 1.75rem;
-            font-weight: bold;
-            color: #1A2421;
-            margin: 0 0 8px 0;
-            font-family: "Noto Serif TC", "PMingLiU", serif;
-        }
-
-        .lesson-meta {
-            font-size: 0.96rem;
-            color: #333333;
-            margin: 0 0 6px 0;
-            font-weight: 500;
-        }
-
-        .lesson-hint {
-            font-size: 0.92rem;
-            color: var(--text-sub);
-            margin: 0 0 18px 0;
-        }
-
-        .classical-box {
-            background-color: var(--green-box-bg);
-            border-left: 4px solid var(--green-dark);
-            padding: 20px 22px;
-            margin-bottom: 16px;
-            font-size: 1.38rem;
-            line-height: 2.35;
-            color: #1F2623;
-            font-family: "Noto Serif TC", "PMingLiU", serif;
-        }
-
-        .classical-box p {
-            margin: 0 0 10px 0;
-        }
-
-        .classical-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .kw {
-            display: inline-block;
-            border: 1.5px solid var(--green-border);
-            background-color: rgba(255, 255, 255, 0.7);
-            color: var(--green-dark);
-            border-radius: 8px;
-            padding: 0 7px;
-            margin: 0 2px;
-            line-height: 1.55;
-            cursor: pointer;
-            font-size: inherit;
-            font-family: inherit;
-        }
-
-        .kw:hover {
-            background-color: #DFECE5;
-        }
-
-        .kw.selected {
-            background-color: var(--green-dark);
-            color: #FFFFFF;
-            border-color: var(--green-dark);
-        }
-
-        .gloss-bar {
-            background-color: var(--yellow-bg);
-            color: var(--yellow-text);
-            border-radius: 10px;
-            padding: 14px 18px;
-            font-size: 1.02rem;
-            margin-bottom: 16px;
-            min-height: 52px;
-        }
-
-        .gloss-bar strong {
-            color: var(--green-dark);
-            margin-right: 6px;
-        }
-
-        .trans-toggle-btn {
-            background: none;
-            border: none;
-            color: var(--green-dark);
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            padding: 6px 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .trans-content {
-            display: none;
-            margin-top: 10px;
-            background-color: #F8F7F2;
-            border: 1px solid #E2DFD5;
-            border-radius: 10px;
-            padding: 16px 18px;
-            font-size: 1.05rem;
-            line-height: 1.85;
-        }
-
-        .trans-content.open {
-            display: block;
-        }
-
-        .trans-content p {
-            margin: 0 0 10px 0;
-        }
-
-        .trans-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .next-row {
-            text-align: right;
-            margin-top: 16px;
-        }
-
-        .next-btn {
-            background-color: var(--green-dark);
-            color: #FFFFFF;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .next-btn:hover {
-            opacity: 0.92;
-        }
-
-        .quiz-item {
-            margin-bottom: 22px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #ECE9E0;
-        }
-
-        .quiz-q {
-            font-weight: bold;
-            font-size: 1.08rem;
-            margin-bottom: 10px;
-        }
-
-        .quiz-options label {
-            display: block;
-            padding: 10px 14px;
-            margin-bottom: 8px;
-            border: 1.5px solid #DCD9CE;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .quiz-options label:hover {
-            background-color: var(--green-box-bg);
-        }
-
-        .quiz-options input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.15);
-            accent-color: var(--green-dark);
-        }
-
-        .exp-box {
-            display: none;
-            margin-top: 10px;
-            padding: 12px 14px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
-
-        .exp-box.right {
-            display: block;
-            background: #E5F5EC;
-            color: #1A5236;
-            border: 1px solid #A8D8BE;
-        }
-
-        .exp-box.wrong {
-            display: block;
-            background: #FDECEA;
-            color: #8A1F17;
-            border: 1px solid #F5B7B1;
-        }
-
-        .submit-quiz-btn {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--accent-orange);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.15rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .score-box {
-            display: none;
-            background-color: var(--green-dark);
-            color: #FFFFFF;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 22px;
-        }
-
-        @media (max-width: 600px) {
-            .classical-box {
-                font-size: 1.2rem;
-                padding: 16px;
-            }
-            .card-box {
-                padding: 20px 16px;
-            }
-            .tab-btn {
-                font-size: 0.9rem;
-                padding: 11px 6px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八上國文自學選文一：《世說新語》選</title>
+<style>
+  body { background:#FAF9F5; color:#222; margin:0; font-family:"PingFang TC","Microsoft JhengHei",sans-serif; line-height:1.8; }
+  .header { background:#1E5641; color:#fff; padding:18px 14px 0; text-align:center; }
+  .header h1 { margin:0 0 4px; font-size:1.35rem; }
+  .header p { margin:0 0 14px; font-size:0.9rem; opacity:0.9; }
+  .tabs { display:flex; max-width:880px; margin:0 auto; gap:6px; }
+  .tab { flex:1; padding:12px 6px; border:none; border-radius:10px 10px 0 0; background:rgba(255,255,255,0.22); color:#fff; font-weight:bold; font-size:0.95rem; cursor:pointer; }
+  .tab.active { background:#FAF9F5; color:#1E5641; }
+  .wrap { max-width:880px; margin:20px auto 50px; padding:0 16px; }
+  .panel { display:none; }
+  .panel.active { display:block; }
+  .card { background:#fff; border:1px solid #E2DFD5; border-radius:12px; padding:22px; margin-bottom:20px; }
+  .card h2 { margin:0 0 10px; color:#1E5641; font-size:1.3rem; }
+  .guide-btn { width:100%; text-align:left; background:#F8F7F2; border:1px solid #E2DFD5; border-radius:8px; padding:12px 15px; font-size:1rem; font-weight:bold; color:#1E5641; cursor:pointer; margin-top:8px; }
+  .guide-body { display:none; padding:12px 15px; border:1px solid #E2DFD5; border-top:none; border-radius:0 0 8px 8px; }
+  .guide-body.open { display:block; }
+  .poem-title { font-size:1.6rem; font-weight:bold; margin:0 0 6px; color:#1A2421; }
+  .meta { font-size:0.92rem; color:#444; margin:0 0 6px; }
+  .hint { font-size:0.88rem; color:#666; margin:0 0 14px; }
+  .text-box { background:#F1F6F3; border-left:4px solid #1E5641; padding:18px; font-size:1.3rem; line-height:2.3; margin-bottom:14px; }
+  .text-box p { margin:0 0 8px; }
+  .text-box p:last-child { margin:0; }
+  .kw { display:inline-block; border:1.5px solid #3B7A61; background:#fff; color:#1E5641; border-radius:7px; padding:0 6px; margin:0 2px; line-height:1.5; cursor:pointer; font-size:inherit; }
+  .kw.on { background:#1E5641; color:#fff; }
+  .gloss { background:#F6EED6; color:#4A3B18; border-radius:8px; padding:12px 16px; margin-bottom:14px; font-size:1rem; }
+  .trans-btn { background:none; border:none; color:#1E5641; font-weight:bold; font-size:0.98rem; cursor:pointer; padding:4px 0; }
+  .trans-box { display:none; background:#F8F7F2; border:1px solid #E2DFD5; border-radius:8px; padding:14px 16px; margin-top:8px; }
+  .trans-box.open { display:block; }
+  .next-btn { background:#1E5641; color:#fff; border:none; padding:11px 20px; border-radius:8px; font-size:0.98rem; font-weight:bold; cursor:pointer; margin-top:12px; }
+  .q-item { margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #ECE9E0; }
+  .q-title { font-weight:bold; margin-bottom:8px; }
+  .q-item label { display:block; padding:8px 12px; border:1px solid #DCD9CE; border-radius:7px; margin-bottom:6px; cursor:pointer; }
+  .exp { display:none; margin-top:8px; padding:10px 12px; border-radius:7px; font-size:0.92rem; }
+  .exp.ok { display:block; background:#E5F5EC; color:#1A5236; }
+  .exp.no { display:block; background:#FDECEA; color:#8A1F17; }
+  .submit-btn { width:100%; padding:14px; background:#B85D3B; color:#fff; border:none; border-radius:8px; font-size:1.1rem; font-weight:bold; cursor:pointer; }
+  .score-bar { display:none; background:#1E5641; color:#fff; padding:16px; border-radius:10px; text-align:center; margin-bottom:18px; font-weight:bold; font-size:1.15rem; }
+</style>
 </head>
 <body>
 
-<div class="header-bar">
-    <h1>六朝名士畫廊——《世說新語》選</h1>
-    <p>八年級國文自學選文一 ｜ 平板互動自學任務</p>
-    <div class="tab-bar">
-        <button type="button" class="tab-btn active" id="tabBtn1" onclick="openTab(1)">① 經典導讀 (5分)</button>
-        <button type="button" class="tab-btn" id="tabBtn2" onclick="openTab(2)">② 點詞語譯與抄寫 (25分)</button>
-        <button type="button" class="tab-btn" id="tabBtn3" onclick="openTab(3)">③ 文意小測驗 10題 (15分)</button>
-    </div>
+<div class="header">
+  <h1>六朝名士畫廊——《世說新語》選</h1>
+  <p>八年級國文自學選文一 ｜ 自學語譯與隨堂測驗</p>
+  <div class="tabs">
+    <button type="button" class="tab active" id="t1" onclick="goTab(1)">① 經典導讀 (5分)</button>
+    <button type="button" class="tab" id="t2" onclick="goTab(2)">② 點詞語譯與抄寫 (25分)</button>
+    <button type="button" class="tab" id="t3" onclick="goTab(3)">③ 文意小測驗 10題 (15分)</button>
+  </div>
 </div>
 
-<div class="main-wrap">
-
-    <div class="checklist">
-        <strong>📌 本節課自學任務檢核表（完成後可自行打勾）：</strong>
-        <label><input type="checkbox"> 任務一：瀏覽「① 經典導讀」，認識《世說新語》與魏晉名士風貌。</label>
-        <label><input type="checkbox"> 任務二：點選「② 點詞語譯」中的綠色詞語框看解釋，並將分段白話抄寫在課本 P.169、P.171。</label>
-        <label><input type="checkbox"> 任務三：完成「③ 文意小測驗」共 10 題（每題 10 分），檢視錯題解析。</label>
+<div class="wrap">
+  <!-- 分頁1 -->
+  <div class="panel active" id="p1">
+    <div class="card">
+      <h2>《世說新語》小檔案（課本 P.166）</h2>
+      <p>● <strong>文體類別：</strong>漢魏六朝筆記小說，屬<strong>志人小說</strong>代表。</p>
+      <p>● <strong>編撰作者：</strong>南朝劉宋<strong>劉義慶</strong>召集文士合力編撰，全書共<strong>三十六類</strong>。</p>
+      <p style="margin-bottom:0;">● <strong>內容特色：</strong>記載東漢至東晉名士言行軼聞，文字簡潔精鍊，善用對比、譬喻與誇飾。</p>
     </div>
 
-    <!-- 分頁 1：經典導讀 -->
-    <div class="page-panel active" id="panel1">
-        <div class="card-box">
-            <h2>《世說新語》小檔案（課本 P.166）</h2>
-            <ul style="margin: 0; padding-left: 22px;">
-                <li><strong>文體類別：</strong>漢魏六朝盛行筆記小說，分為「志怪」（如《搜神記》）與<strong>「志人」</strong>兩類，本書是<strong>志人小說</strong>的代表。</li>
-                <li><strong>編撰作者：</strong>原名《世說》，由南朝劉宋皇族<strong>劉義慶</strong>召集文士合力編撰。</li>
-                <li><strong>內容特色：</strong>記載東漢至東晉名士的言行與軼聞，全書共<strong>三十六類</strong>，文字簡潔精鍊，善用對
+    <div class="card">
+      <h2>六朝名士四大風貌（點擊展開）</h2>
+      <button type="button" class="guide-btn" onclick="togGuide(this)">一、美男當道的世代（容止篇） ▼</button>
+      <div class="guide-body open">
+        <p><strong>1. 潘安（擲果盈車）：</strong>容貌英俊，出門時婦女爭相丟水果進車子表達愛慕。</p>
+        <p><strong>2. 左思（東施效顰）：</strong>寫《三都賦》造成「洛陽紙貴」，因長相醜陋學潘安逛街卻被吐口水。</p>
+        <p style="margin-bottom:0;"><strong>3. 王濟與衛玠（自慚形穢）：</strong>王濟雖俊美，但在外甥衛玠旁就自覺相貌醜陋。</p>
+      </div>
+
+      <button type="button" class="guide-btn" onclick="togGuide(this)">二、舉止瀟灑的風采（排調篇、雅量篇） ▼</button>
+      <div class="guide-body">
+        <p><strong>1. 郝隆晒書：</strong>七月七日富人晒書炫富，郝隆脫衣躺太陽下笑稱「在晒肚子裡的書」。</p>
+        <p style="margin-bottom:0;"><strong>2. 王羲之（坦腹東床）：</strong>王家子弟聽聞挑女婿都拘謹裝模作樣，唯獨王羲之在東床露肚皮躺臥而獲選。</p>
+      </div>
+
+      <button type="button" class="guide-btn" onclick="togGuide(this)">三、個人特質的圖象（儉嗇篇、忿狷篇、賞譽篇） ▼</button>
+      <div class="guide-body">
+        <p><strong>1. 王戎（吝嗇）：</strong>家財萬貫卻極度小氣，賣李子前怕別人拿種子去種，先把李核鑽洞。</p>
+        <p style="margin-bottom:0;"><strong>2. 王藍田（急躁與直率）：</strong>吃雞蛋急躁暴怒；但任王導屬下時敢直言不諱，不隨聲附和。</p>
+      </div>
+
+      <button type="button" class="guide-btn" onclick="togGuide(this)">四、靈敏巧對的機智（言語篇） ▼</button>
+      <div class="guide-body">
+        <p><strong>1. 孔融（小時了了）：</strong>面對陳韙嘲諷「小時聰明長大未必有成就」，立刻反擊「想必您小時候一定很聰明」。</p>
+        <p style="margin-bottom:0;"><strong>2. 鍾毓、鍾會兄弟：</strong>面見曹丕時，哥哥緊張流汗「汗出如漿」，弟弟回答「汗不敢出」。</p>
+      </div>
+
+      <div style="text-align:right;">
+        <button type="button" class="next-btn" onclick="goTab(2)">下一步：前往點詞語譯與抄寫 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分頁2 -->
+  <div class="panel" id="p2">
+    <div class="card">
+      <div class="poem-title">坦腹東床</div>
+      <p class="meta">《世
