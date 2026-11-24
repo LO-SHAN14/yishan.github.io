@@ -3,417 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八上國文自學選文一：《世說新語》選</title>
+    <title>八上國文自學選文一：六朝名士畫廊——《世說新語》選</title>
     <style>
-        body {
-            background-color: #FAF9F5;
-            color: #222222;
-            margin: 0;
-            padding: 20px 16px 60px;
+        :root {
+            --bg-page: #FAF9F5;
+            --card-bg: #FFFFFF;
+            --green-dark: #1E5641;
+            --green-box-bg: #F1F6F3;
+            --green-border: #3B7A61;
+            --yellow-bg: #F6EED6;
+            --yellow-text: #4A3B18;
+            --text-main: #222222;
+            --text-sub: #4E5452;
+            --accent-orange: #B85D3B;
+        }
+
+        * {
+            box-sizing: border-box;
             font-family: "PingFang TC", "Noto Serif TC", "Microsoft JhengHei", sans-serif;
+            -webkit-tap-highlight-color: rgba(30, 86, 65, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             line-height: 1.8;
         }
 
-        .wrap {
+        /* 頂部標題與三分頁導覽（不使用 sticky，避免平板/預覽框圖層遮擋點擊） */
+        .header-bar {
+            background-color: var(--green-dark);
+            color: #FFFFFF;
+            padding: 20px 16px 0;
+            text-align: center;
+        }
+
+        .header-bar h1 {
+            margin: 0 0 4px 0;
+            font-size: 1.45rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header-bar p {
+            margin: 0 0 16px 0;
+            font-size: 0.92rem;
+            opacity: 0.92;
+        }
+
+        .tab-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .page-banner {
-            background-color: #1E5641;
-            color: #FFFFFF;
-            padding: 18px 22px;
-            border-radius: 12px;
-            margin-bottom: 22px;
-        }
-
-        .page-banner h1 {
-            margin: 0 0 4px 0;
-            font-size: 1.45rem;
-        }
-
-        .page-banner p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.92;
-        }
-
-        .box {
-            background-color: #FFFFFF;
-            border: 1px solid #E2DFD5;
-            border-radius: 12px;
-            padding: 22px;
-            margin-bottom: 24px;
-        }
-
-        .box h2 {
-            margin: 0 0 8px 0;
-            font-size: 1.65rem;
-            color: #1A2421;
-            font-family: "Noto Serif TC", "PMingLiU", serif;
-        }
-
-        .sub-note {
-            margin: 0 0 14px 0;
-            color: #4A524F;
-            font-size: 0.95rem;
-        }
-
-        .classical-area {
-            background-color: #F1F6F3;
-            border-left: 4px solid #1E5641;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-            font-size: 1.32rem;
-            line-height: 2.35;
-            font-family: "Noto Serif TC", "PMingLiU", serif;
-        }
-
-        .classical-area p {
-            margin: 0 0 10px 0;
-        }
-
-        .classical-area p:last-child {
-            margin-bottom: 0;
-        }
-
-        .kw {
-            display: inline-block;
-            border: 1.5px solid #3B7A61;
-            background-color: #FFFFFF;
-            color: #1E5641;
-            border-radius: 7px;
-            padding: 0 7px;
-            margin: 0 2px;
-            line-height: 1.5;
-            cursor: pointer;
-        }
-
-        .kw.active {
-            background-color: #1E5641;
-            color: #FFFFFF;
-        }
-
-        .gloss-box {
-            background-color: #F6EED6;
-            color: #4A3B18;
-            border-radius: 9px;
-            padding: 13px 16px;
-            margin-bottom: 14px;
-            font-size: 1rem;
-        }
-
-        details summary {
-            cursor: pointer;
-            font-weight: bold;
-            color: #1E5641;
-            padding: 6px 0;
-        }
-
-        .vernacular-box {
-            background-color: #F8F7F2;
-            border: 1px solid #E2DFD5;
-            border-radius: 9px;
-            padding: 14px 16px;
-            margin-top: 8px;
-            font-size: 1rem;
-        }
-
-        .q-item {
-            padding-bottom: 16px;
-            margin-bottom: 18px;
-            border-bottom: 1px solid #ECE9E0;
-        }
-
-        .q-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 1.05rem;
-        }
-
-        .q-item label {
+        .tab-btn {
+            flex: 1;
             display: block;
-            padding: 8px 12px;
-            border: 1px solid #DCD9CE;
-            border-radius: 7px;
-            margin-bottom: 6px;
-            cursor: pointer;
-        }
-
-        .exp {
-            display: none;
-            margin-top: 8px;
-            padding: 10px 12px;
-            border-radius: 7px;
-            font-size: 0.95rem;
-        }
-
-        .exp.ok {
-            display: block;
-            background: #E5F5EC;
-            color: #1A5236;
-        }
-
-        .exp.no {
-            display: block;
-            background: #FDECEA;
-            color: #8A1F17;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background-color: #1E5641;
+            padding: 13px 10px;
+            background-color: rgba(255, 255, 255, 0.22);
             color: #FFFFFF;
             border: none;
-            border-radius: 9px;
-            font-size: 1.1rem;
+            border-radius: 10px 10px 0 0;
+            font-size: 1rem;
             font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .tab-btn.active {
+            background-color: var(--bg-page);
+            color: var(--green-dark);
+        }
+
+        /* 主內容容器 */
+        .main-wrap {
+            max-width: 900px;
+            margin: 22px auto 60px;
+            padding: 0 16px;
+        }
+
+        .page-panel {
+            display: none;
+        }
+
+        .page-panel.active {
+            display: block;
+        }
+
+        /* 任務檢核表 */
+        .checklist {
+            background-color: var(--green-box-bg);
+            border-left: 4px solid var(--green-dark);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 22px;
+            font-size: 0.96rem;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
             cursor: pointer;
         }
 
-        .result-box {
-            display: none;
-            background-color: #F6EED6;
-            border: 2px solid #D9C48E;
-            color: #4A3B18;
-            padding: 16px;
+        .checklist input[type="checkbox"] {
+            width: 19px;
+            height: 19px;
+            accent-color: var(--green-dark);
+        }
+
+        /* 卡片區塊 */
+        .card-box {
+            background: var(--card-bg);
+            border: 1px solid #E5E2D9;
+            border-radius: 14px;
+            padding: 26px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .card-box h2 {
+            margin: 0 0 10px 0;
+            color: var(--green-dark);
+            font-size: 1.35rem;
+            border-bottom: 2px solid var(--green-box-bg);
+            padding-bottom: 8px;
+        }
+
+        /* 導讀折疊項目 */
+        .guide-item {
+            border: 1px solid #E2DFD5;
             border-radius: 10px;
-            text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .guide-btn {
+            width: 100%;
+            text-align: left;
+            background-color: #F8F7F2;
+            border: none;
+            padding: 14px 18px;
+            font-size: 1.05rem;
             font-weight: bold;
-            font-size: 1.15rem;
-        }
-    </style>
-</head>
-<body>
-<div class="wrap">
-
-    <div class="page-banner">
-        <h1>八上國文自學選文一：《世說新語》選</h1>
-        <p>一節課自學流程：1. 看導讀重點 → 2. 點詞看解釋並抄寫白話於課本 → 3. 完成下方 10 題小測驗（每題 10 分）</p>
-    </div>
-
-    <div class="box">
-        <details open>
-            <summary>一、經典導讀重點（課本 P.166-172）</summary>
-            <div class="vernacular-box">
-                <p><strong>《世說新語》：</strong>南朝劉宋劉義慶召集文士編撰，屬<strong>志人筆記小說</strong>，全書共<strong>三十六類</strong>，記錄東漢至東晉名士言行，善用對比、譬喻與誇飾。</p>
-                <p style="margin-bottom:0;"><strong>名士四面向：</strong>美男當道（潘安擲果盈車、左思效顰、王濟自慚形穢）、舉止瀟灑（郝隆坦腹晒書、王羲之坦腹東床）、個人特質（王戎鑽李核吝嗇、王藍田食雞子急躁與直言）、靈敏巧對（孔融「小時了了」、鍾毓與鍾會兄弟）。</p>
-            </div>
-        </details>
-    </div>
-
-    <!-- 坦腹東床 -->
-    <div class="box" id="sec-tanfu">
-        <h2>坦腹東床</h2>
-        <p class="sub-note">《世說新語・雅量》｜ 讀完先回答三問：誰派人來？門生看見什麼？最後選了誰？</p>
-        <p class="sub-note">先讀原文，遇到不懂的詞可以點開注釋（課本 P.169）。</p>
-
-        <div class="classical-area">
-            <p>
-                郗太尉在京口，<span class="kw" onclick="pickWord('gloss-tanfu', this, '遣（ㄑㄧㄢˇ）：派遣、差使。')">遣</span>門生與王丞相<span class="kw" onclick="pickWord('gloss-tanfu', this, '書：信件、書信。')">書</span>，求女婿。丞相<span class="kw" onclick="pickWord('gloss-tanfu', this, '語（ㄩˋ）：告訴、對……說。')">語</span><span class="kw" onclick="pickWord('gloss-tanfu', this, '郗（ㄔ）信：郗太尉派來的使者。「信」指傳送信件的人。')">郗信</span>：「君往<span class="kw" onclick="pickWord('gloss-tanfu', this, '東廂：東邊的廂房。')">東廂</span>，任意選之。」
-            </p>
-            <p>
-                門生歸，<span class="kw" onclick="pickWord('gloss-tanfu', this, '白：稟報、報告。')">白</span>郗曰：「王家<span class="kw" onclick="pickWord('gloss-tanfu', this, '諸郎：各位年輕子弟。「諸」是眾、各的意思。')">諸郎</span>，亦皆可嘉，聞來覓婿，<span class="kw" onclick="pickWord('gloss-tanfu', this, '咸（ㄒㄧㄢˊ）：都、皆。')">咸</span>自<span class="kw" onclick="pickWord('gloss-tanfu', this, '矜（ㄐㄧㄣ）持：拘謹不自在。')">矜持</span>；唯有一郎，在東床上<span class="kw" onclick="pickWord('gloss-tanfu', this, '坦腹：露出肚皮。「坦」是露出。')">坦腹</span>臥，如不聞。」
-            </p>
-            <p>
-                郗公云：「正此好！」<span class="kw" onclick="pickWord('gloss-tanfu', this, '訪之：打聽這個人。「之」代指後面的逸少（王羲之）。')">訪之</span>，乃是<span class="kw" onclick="pickWord('gloss-tanfu', this, '逸少：王羲之的字。東晉著名書法家。')">逸少</span>。<span class="kw" onclick="pickWord('gloss-tanfu', this, '因嫁女與焉：於是就把女兒嫁給了他。「焉」代指前面的逸少。')">因嫁女與焉</span>。
-            </p>
-        </div>
-
-        <div class="gloss-box" id="gloss-tanfu">
-            點一下原文標示的詞語，這裡會顯示解釋。
-        </div>
-
-        <details>
-            <summary>▸ 看分段白話（抄寫於課本 P.169）</summary>
-            <div class="vernacular-box">
-                <p><strong>第一段：</strong>郗太尉在京口時，派遣門生送信給丞相王導，信中想在王家挑選一位女婿。王丞相告訴郗太尉的使者：「你到東廂房去，隨意挑選吧！」</p>
-                <p><strong>第二段：</strong>門生回去後，向郗太尉報告說：「王家的年輕子弟們也都很不錯，聽說有人來挑女婿，個個都表現得拘謹莊重；只有一位年輕人，在東邊的床上露出肚皮躺著，好像完全沒聽見這回事一樣。」</p>
-                <p style="margin-bottom:0;"><strong>第三段：</strong>郗太尉說：「正是這個人最好！」派人打聽之後，原來他就是王羲之。於是就把女兒嫁給了他。</p>
-            </div>
-        </details>
-    </div>
-
-    <!-- 王藍田食雞子 -->
-    <div class="box" id="sec-jizi">
-        <h2>王藍田食雞子</h2>
-        <p class="sub-note">《世說新語・忿狷》｜ 讀完先圈出原文動作：刺、擲、跟、取、內、齧、吐。</p>
-        <p class="sub-note">先讀原文，遇到不懂的詞可以點開注釋（課本 P.171）。</p>
-
-        <div class="classical-area">
-            <p>
-                <span class="kw" onclick="pickWord('gloss-jizi', this, '王藍田：指王述，東晉人，封藍田侯，故稱王藍田。')">王藍田</span>性急，<span class="kw" onclick="pickWord('gloss-jizi', this, '嘗（ㄔㄤˊ）：曾經。')">嘗</span>食<span class="kw" onclick="pickWord('gloss-jizi', this, '雞子：雞蛋。')">雞子</span>，以<span class="kw" onclick="pickWord('gloss-jizi', this, '筯（ㄓㄨˋ）：同「箸」，筷子。')">筯</span>刺之，不得，便大怒，<span class="kw" onclick="pickWord('gloss-jizi', this, '舉以擲（ㄓˊ）地：拿起雞蛋扔在地上。')">舉以擲地</span>。
-            </p>
-            <p>
-                雞子於地<span class="kw" onclick="pickWord('gloss-jizi', this, '圓轉未止：在地上滾動轉個不停。')">圓轉未止</span>，<span class="kw" onclick="pickWord('gloss-jizi', this, '仍：於是。')">仍</span>下地以<span class="kw" onclick="pickWord('gloss-jizi', this, '屐（ㄐㄧ）齒：木屐底部凸出像牙齒的部分。')">屐齒</span><span class="kw" onclick="pickWord('gloss-jizi', this, '跟（ㄋㄧㄢˇ）：踩踏。')">跟</span>之，又不得，<span class="kw" onclick="pickWord('gloss-jizi', this, '瞋（ㄔㄣ）甚：非常憤怒。瞋，睜大眼睛發怒。')">瞋甚</span>。復於地取<span class="kw" onclick="pickWord('gloss-jizi', this, '內（ㄋㄚˋ）：同「納」，放入。')">內</span>口中，<span class="kw" onclick="pickWord('gloss-jizi', this, '齧（ㄋㄧㄝˋ）：咬。')">齧</span>破即吐之。
-            </p>
-            <p>
-                <span class="kw" onclick="pickWord('gloss-jizi', this, '王右軍：指王羲之，曾任右軍將軍。')">王右軍</span>聞而大笑，曰：「<span class="kw" onclick="pickWord('gloss-jizi', this, '使：假使。')">使</span><span class="kw" onclick="pickWord('gloss-jizi', this, '安期：王承，王藍田的父親，為人誠信有清譽。')">安期</span>有此性，猶當無<span class="kw" onclick="pickWord('gloss-jizi', this, '一豪：同「一毫」，比喻事物的極微小。')">一豪</span>可論，況藍田<span class="kw" onclick="pickWord('gloss-jizi', this, '耶（ㄧㄝˊ）：同「邪」，語末疑問助詞，呢。')">耶</span>？」
-            </p>
-        </div>
-
-        <div class="gloss-box" id="gloss-jizi">
-            點一下原文標示的詞語，這裡會顯示解釋。
-        </div>
-
-        <details>
-            <summary>▸ 看分段白話（抄寫於課本 P.171）</summary>
-            <div class="vernacular-box">
-                <p><strong>第一段：</strong>王藍田性情急躁，曾經在吃雞蛋時，用筷子去刺它，沒有刺到，就非常生氣，拿起雞蛋扔在地上。</p>
-                <p><strong>第二段：</strong>雞蛋在地上滾動轉個不停，他於是走下坐榻用木屐去踩踏它，又沒踩到，變得更加憤怒。他又從地上把雞蛋撿起來放入口中，用力咬破後立刻吐出來。</p>
-                <p style="margin-bottom:0;"><strong>第三段：</strong>王羲之聽說這件事後大笑說：「假使他父親王安期有這種急躁脾氣，尚且沒有一絲一毫可取之處了，更何況是王藍田呢？」</p>
-            </div>
-        </details>
-    </div>
-
-    <!-- 10題隨堂小測驗 -->
-    <div class="box" id="sec-quiz">
-        <h2>隨堂小測驗（共 10 題，每題 10 分）</h2>
-        <p class="sub-note">完成作答後按下方按鈕查看分數與解析。</p>
-
-        <div class="result-box" id="resultBox"></div>
-
-        <div class="q-item" data-ans="B">
-            <div class="q-title">1. 下列關於《世說新語》一書的說明，何者「錯誤」？</div>
-            <label><input type="radio" name="q1" value="A"> (A) 屬於漢魏六朝筆記小說，是中國志人小說的代表作。</label>
-            <label><input type="radio" name="q1" value="B"> (B) 由南朝劉義慶獨力撰寫完成，依朝代先後順序編排。</label>
-            <label><input type="radio" name="q1" value="C"> (C) 全書分為三十六類，主要記載東漢至東晉名士言行。</label>
-            <label><input type="radio" name="q1" value="D"> (D) 文字簡潔精鍊且故事趣味橫生，對後世小說影響深遠。</label>
-            <div class="exp">【解析】答案為 (B)。由劉義慶召集文士合力編撰，且全書按性質分類（共三十六類）。</div>
-        </div>
-
-        <div class="q-item" data-ans="C">
-            <div class="q-title">2. 郗太尉聽了門生對王家子弟的觀察後，決定將女兒嫁給王羲之，主要是欣賞他的哪種特質？</div>
-            <label><input type="radio" name="q2" value="A"> (A) 飽讀詩書，才華洋溢。</label>
-            <label><input type="radio" name="q2" value="B"> (B) 體格強健，不畏寒暑。</label>
-            <label><input type="radio" name="q2" value="C"> (C) 本性率真，毫不做作。</label>
-            <label><input type="radio" name="q2" value="D"> (D) 孤芳自賞，特立獨行。</label>
-            <div class="exp">【解析】答案為 (C)。唯有王羲之在東床上坦腹臥、如不聞，展現率真本性。</div>
-        </div>
-
-        <div class="q-item" data-ans="A">
-            <div class="q-title">3. 下列哪一個字詞的字音與字義配對，完全「正確」？</div>
-            <label><input type="radio" name="q3" value="A"> (A) 以「筯」刺之：音ㄓㄨˋ，指筷子。</label>
-            <label><input type="radio" name="q3" value="B"> (B) 以屐齒「跟」之：音ㄍㄣ，指跟隨。</label>
-            <label><input type="radio" name="q3" value="C"> (C) 取「內」口中：音ㄋㄟˋ，指裡面。</label>
-            <label><input type="radio" name="q3" value="D"> (D) 「齧」破即吐之：音ㄋㄧㄝˋ，指捏碎。</label>
-            <div class="exp">【解析】答案為 (A)。(B) 跟音ㄋㄧㄢˇ，踩踏；(C) 內音ㄋㄚˋ，同納，放入；(D) 齧音ㄋㄧㄝˋ，咬。</div>
-        </div>
-
-        <div class="q-item" data-ans="D">
-            <div class="q-title">4. 關於〈坦腹東床〉的字詞與代詞分析，下列何者「正確」？</div>
-            <label><input type="radio" name="q4" value="A"> (A) 「丞相語郗信」的「信」，是指王丞相寫的回信。</label>
-            <label><input type="radio" name="q4" value="B"> (B) 「任意選之」的「之」，是指東廂房裡的書法作品。</label>
-            <label><input type="radio" name="q4" value="C"> (C) 「訪之，乃是逸少」的「之」，是指郗太尉的門生。</label>
-            <label><input type="radio" name="q4" value="D"> (D) 「因嫁女與焉」的「焉」，是指前面提到的王逸少。</label>
-            <div class="exp">【解析】答案為 (D)。(A) 信指使者；(B) 之指王家諸郎；(C) 之指在東床上坦腹臥的逸少。</div>
-        </div>
-
-        <div class="q-item" data-ans="B">
-            <div class="q-title">5. 《王藍田食雞子》一文中，作者主要是透過哪一種寫作手法來凸顯人物性格？</div>
-            <label><input type="radio" name="q5" value="A"> (A) 透過細膩的內心獨白，剖析人物的焦慮。</label>
-            <label><input type="radio" name="q5" value="B"> (B) 透過一連串誇張動作，展現人物的急躁。</label>
-            <label><input type="radio" name="q5" value="C"> (C) 透過激烈的言語辯論，呈現人物的機智。</label>
-            <label><input type="radio" name="q5" value="D"> (D) 透過詳實的環境描寫，襯托人物的孤獨。</label>
-            <div class="exp">【解析】答案為 (B)。文中以「刺、擲、跟、取、內、齧、吐」等誇張動作刻畫急躁。</div>
-        </div>
-
-        <div class="q-item" data-ans="C">
-            <div class="q-title">6. 王羲之聽到王藍田吃雞蛋的事後笑說：「使安期有此性，猶當無一豪可論，況藍田耶？」這句話的意思為何？</div>
-            <label><input type="radio" name="q6" value="A"> (A) 讚美王安期教子有方，虎父無犬子。</label>
-            <label><input type="radio" name="q6" value="B"> (B) 認為王藍田比父親王安期更加穩重。</label>
-            <label><input type="radio" name="q6" value="C"> (C) 譏諷王藍田遠不如父親安期那般賢能。</label>
-            <label><input type="radio" name="q6" value="D"> (D) 感嘆安期父子兩人都同樣性急且魯莽。</label>
-            <div class="exp">【解析】答案為 (C)。安期素有清譽，王羲之以此反襯王藍田急躁無可取之處。</div>
-        </div>
-
-        <div class="q-item" data-ans="A">
-            <div class="q-title">7. 根據課本〈人物形象掃描〉，下列魏晉名士與其「形象特色」的配對，何者「正確」？</div>
-            <label><input type="radio" name="q7" value="A"> (A) 郝隆七月七日赤身坦腹躺太陽下 ── 不隨流俗。</label>
-            <label><input type="radio" name="q7" value="B"> (B) 王戎賣李子前先把李核鑽個洞 ── 眼光獨特。</label>
-            <label><input type="radio" name="q7" value="C"> (C) 孔融反駁陳韙小時了了的言論 ── 吝嗇小氣。</label>
-            <label><input type="radio" name="q7" value="D"> (D) 王藍田質疑王導說話未必全對 ── 聰慧機靈。</label>
-            <div class="exp">【解析】答案為 (A)。(B) 王戎吝嗇小氣；(C) 孔融聰慧機靈；(D) 王藍田不隨聲附和。</div>
-        </div>
-
-        <div class="q-item" data-ans="D">
-            <div class="q-title">8. 下列成語皆出自《世說新語》，何者的解釋與使用情境「不恰當」？</div>
-            <label><input type="radio" name="q8" value="A"> (A) 東床快婿：用來稱讚別人女婿才貌出眾。</label>
-            <label><input type="radio" name="q8" value="B"> (B) 自慚形穢：比喻因不如別人而感到羞愧。</label>
-            <label><input type="radio" name="q8" value="C"> (C) 擲果盈車：用來形容男子容貌極為英俊。</label>
-            <label><input type="radio" name="q8" value="D"> (D) 小時了了：用來讚美少年長大必成大器。</label>
-            <div class="exp">【解析】答案為 (D)。「小時了了，大未必佳」帶戲謔語氣，非讚美長大必成大器。</div>
-        </div>
-
-        <div class="q-item" data-ans="C">
-            <div class="q-title">9. 魏晉名士以清談為時尚，言談間常展現機智。下列哪一則故事最能體現「臨場機智應對」？</div>
-            <label><input type="radio" name="q9" value="A"> (A) 王戎在姪兒結婚時只送一件衣服，事後又討回。</label>
-            <label><input type="radio" name="q9" value="B"> (B) 王藍田因吃不到雞蛋，用木屐踩蛋又咬破吐出。</label>
-            <label><input type="radio" name="q9" value="C"> (C) 孔融面對陳韙的質疑，反問對方小時候是否聰明。</label>
-            <label><input type="radio" name="q9" value="D"> (D) 郗太尉派門生到東廂房，讓使者自己挑選女婿。</label>
-            <div class="exp">【解析】答案為 (C)。孔融以機智妙語反擊陳韙。</div>
-        </div>
-
-        <div class="q-item" data-ans="C">
-            <div class="q-title">10. 關於《世說新語》的寫作特色，下列敘述何者「正確」？</div>
-            <label><input type="radio" name="q10" value="A"> (A) 屬於嚴謹的史傳文學，所有情節皆經嚴格考證。</label>
-            <label><input type="radio" name="q10" value="B"> (B) 內容以神怪靈異為主，與《搜神記》屬於同類。</label>
-            <label><input type="radio" name="q10" value="C"> (C) 善用對比、譬喻與誇飾，讓名士形象躍然紙上。</label>
-            <label><input type="radio" name="q10" value="D"> (D) 每則故事篇幅冗長，偏向細膩描寫戰爭經過。</label>
-            <div class="exp">【解析】答案為 (C)。《世說新語》是志人小說，篇幅精鍊，善用對比、譬喻與誇飾。</div>
-        </div>
-
-        <button type="button" class="btn-submit" onclick="submitQuiz()">送出答案（查看 10 題成績與解析）</button>
-    </div>
-
-</div>
-
-<script>
-    function pickWord(targetId, el, text) {
-        var box = el.closest('.box');
-        var list = box.querySelectorAll('.kw');
-        for (var i = 0; i < list.length; i++) {
-            list[i].classList.remove('active');
-        }
-        el.classList.add('active');
-        document.getElementById(targetId).innerHTML = '<strong>【' + el.innerText + '】</strong>' + text;
-    }
-
-    function submitQuiz() {
-        var items = document.querySelectorAll('.q-item');
-        var score = 0;
-        var miss = 0;
-
-        for (var i = 0; i < items.length; i++) {
-            var checked = items[i].querySelector('input[name="q' + (i + 1) + '"]:checked');
-            if (!checked) miss++;
+            color: var(--green-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        if (miss > 0) {
-            alert('還有 ' + miss + ' 題還沒作答喔！');
-            return;
+        .guide-btn:hover {
+            background-color: var(--green-box-bg);
         }
 
-        for (var j = 0; j < items.length; j++) {
-            var ans = items[j].getAttribute('data-ans');
-            var pick = items[j].querySelector('input[name="q' + (j + 1) + '"]:checked').value;
-            var exp = items[j].querySelector('.exp');
-            exp.classList.remove('ok', 'no');
-            if (pick === ans) {
-                score += 10;
-                exp.classList.add('ok');
-            } else {
-                exp.classList.add('no');
-            }
+        .guide-body {
+            display: none;
+            padding: 16px 18px;
+            background-color: #FFFFFF;
+            border-top: 1px solid #E2DFD5;
+            font-size: 1rem;
         }
 
-        var res = document.getElementById('resultBox');
-        res.style.display = 'block';
-        res.innerHTML = '本次得分：' + score + ' 分（共 10 題，每題 10 分）';
-        res.scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-</body>
-</html>
+        .guide-body.open {
+            display: block;
+        }
+
+        /* 原典精選（仿截圖極簡排版） */
+        .lesson-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #1A2421;
+            margin: 0 0 8px 0;
+            font-family: "Noto Serif TC", "PMingLiU", serif;
+        }
+
+        .lesson-meta {
+            font-size: 0.96rem;
+            color: #333333;
+            margin: 0 0 6px 0;
+            font-weight: 500;
+        }
+
+        .lesson-hint {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin: 0 0 18px 0;
+        }
+
+        .classical-box {
+            background-color: var(--green-box-bg);
+            border-left: 4px solid var(--green-dark);
+            padding: 20px 22px;
+            margin-bottom: 16px;
+            font-size: 1.38rem;
+            line-
