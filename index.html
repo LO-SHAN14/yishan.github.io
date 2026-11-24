@@ -220,7 +220,6 @@
 </div>
 
 <div class="container">
-  <!-- 分頁1 -->
   <div class="panel active" id="p1">
     <div class="card">
       <div class="title-lg">《世說新語》小檔案（課本 P.166）</div>
@@ -263,7 +262,6 @@
     </div>
   </div>
 
-  <!-- 分頁2 -->
   <div class="panel" id="p2">
     <div class="card">
       <div class="title-lg">坦腹東床</div>
@@ -289,4 +287,93 @@
       <p class="hint-txt">先讀原文，遇到不懂的詞可以點開注釋（課本 P.171）。</p>
       <div class="poem-area">
         <p><button type="button" class="kw" onclick="pickKw('g2',this,'王藍田：指王述，東晉人，封藍田侯，故稱王藍田。')">王藍田</button>性急，<button type="button" class="kw" onclick="pickKw('g2',this,'嘗（ㄔㄤˊ）：曾經。')">嘗</button>食<button type="button" class="kw" onclick="pickKw('g2',this,'雞子：雞蛋。')">雞子</button>，<button type="button" class="kw" onclick="pickKw('g2',this,'以：用。')">以</button><button type="button" class="kw" onclick="pickKw('g2',this,'筯（ㄓㄨˋ）：同「箸」，筷子。')">筯</button>刺<button type="button" class="kw" onclick="pickKw('g2',this,'之：代指雞子。')">之</button>，不得，便大怒，<button type="button" class="kw" onclick="pickKw('g2',this,'舉以擲地：拿起雞蛋扔在地上。其中「以」作「而」解，「擲」音ㄓˊ，指丟。')">舉以擲地</button>。</p>
-        <p>雞子<button type="button" class="kw" onclick="pickKw
+        <p>雞子<button type="button" class="kw" onclick="pickKw('g2',this,'於：在。')">於</button>地<button type="button" class="kw" onclick="pickKw('g2',this,'圓轉未止：在地上滾動轉個不停。')">圓轉未止</button>，<button type="button" class="kw" onclick="pickKw('g2',this,'仍：於是。')">仍</button>下地<button type="button" class="kw" onclick="pickKw('g2',this,'以：用。')">以</button><button type="button" class="kw" onclick="pickKw('g2',this,'屐（ㄐㄧ）齒：木屐底部凸出像牙齒的部分。')">屐齒</button><button type="button" class="kw" onclick="pickKw('g2',this,'蹍（ㄋㄧㄢˇ）：踩踏。')">蹍</button>之，又不得，<button type="button" class="kw" onclick="pickKw('g2',this,'瞋（ㄔㄣ）甚：非常憤怒。瞋，睜大眼睛發怒。')">瞋甚</button>。復<button type="button" class="kw" onclick="pickKw('g2',this,'於：從。')">於</button>地取<button type="button" class="kw" onclick="pickKw('g2',this,'內（ㄋㄚˋ）：同「納」，放入。')">內</button>口中，齧破<button type="button" class="kw" onclick="pickKw('g2',this,'即：立刻、馬上。')">即</button>吐之。</p>
+        <p><button type="button" class="kw" onclick="pickKw('g2',this,'王右軍：指王羲之，曾任右軍將軍。')">王右軍</button>聞而大笑，曰：「<button type="button" class="kw" onclick="pickKw('g2',this,'使：假使。')">使</button><button type="button" class="kw" onclick="pickKw('g2',this,'安期：王承，王藍田的父親，為人誠信有清譽。')">安期</button>有此性，<button type="button" class="kw" onclick="pickKw('g2',this,'猶：還、仍、尚且。')">猶</button>當無<button type="button" class="kw" onclick="pickKw('g2',this,'一豪：同「一毫」，比喻事物的極微小。')">一豪</button>可論，況藍田<button type="button" class="kw" onclick="pickKw('g2',this,'耶（ㄧㄝˊ）：同「邪」，語末疑問助詞，呢。')">耶</button>？」</p>
+      </div>
+      <div class="gloss-box" id="g2">點一下原文標示的詞語，這裡會顯示解釋。</div>
+      <button type="button" class="action-btn" onclick="togBox('tr2')">▸ 看分段白話（抄寫於課本 P.171）</button>
+      <div class="trans-box" id="tr2">
+        <p><strong>第一段：</strong>王藍田性情急躁，曾經在吃雞蛋時，用筷子去刺它，沒有刺到，就非常生氣，拿起雞蛋扔在地上。</p>
+        <p><strong>第二段：</strong>雞蛋在地上滾動轉個不停，他於是走下坐榻用木屐去踩踏它，又沒踩到，變得更加憤怒。他又從地上把雞蛋撿起來放入口中，用力咬破後立刻吐出來。</p>
+        <p style="margin-bottom:0;"><strong>第三段：</strong>王羲之聽說這件事後大笑說：「假使他父親王安期有這種急躁脾氣，尚且沒有一絲一毫可取之處了，更何況是王藍田呢？」</p>
+      </div>
+      <div style="margin-top:16px;">
+        <button type="button" class="action-btn" onclick="switchTab(3)">抄寫完成！前往文意小測驗（10題） ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p3">
+    <div class="score-box" id="scoreBox"></div>
+    <div class="card">
+      <div class="title-lg">《世說新語》隨堂小測驗（共 10 題，每題 10 分）</div>
+      <div class="q-block" data-ans="B">
+        <div><strong>1. 下列關於《世說新語》一書的說明，何者「錯誤」？</strong></div>
+        <label><input type="radio" name="q1" value="A"> (A) 屬於漢魏六朝筆記小說，是中國志人小說的代表作。</label>
+        <label><input type="radio" name="q1" value="B"> (B) 由南朝劉義慶獨力撰寫完成，依朝代先後順序編排。</label>
+        <label><input type="radio" name="q1" value="C"> (C) 全書分為三十六類，主要記載東漢至東晉名士言行。</label>
+        <label><input type="radio" name="q1" value="D"> (D) 文字簡潔精鍊且故事趣味橫生，對後世小說影響深遠。</label>
+        <div class="exp-txt">【解析】答案為 (B)。由劉義慶召集文士合力編撰，且按性質分類（共三十六類）。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>2. 郗太尉決定將女兒嫁給王羲之，主要是欣賞他的哪種特質？</strong></div>
+        <label><input type="radio" name="q2" value="A"> (A) 飽讀詩書，才華洋溢。</label>
+        <label><input type="radio" name="q2" value="B"> (B) 體格強健，不畏寒暑。</label>
+        <label><input type="radio" name="q2" value="C"> (C) 本性率真，毫不做作。</label>
+        <label><input type="radio" name="q2" value="D"> (D) 孤芳自賞，特立獨行。</label>
+        <div class="exp-txt">【解析】答案為 (C)。唯有王羲之「坦腹臥，如不聞」，展現率真本性。</div>
+      </div>
+      <div class="q-block" data-ans="A">
+        <div><strong>3. 下列哪一個字詞的字音與字義配對，完全「正確」？</strong></div>
+        <label><input type="radio" name="q3" value="A"> (A) 以「筯」刺之：音ㄓㄨˋ，指筷子。</label>
+        <label><input type="radio" name="q3" value="B"> (B) 以屐齒「蹍」之：音ㄍㄣ，指跟隨。</label>
+        <label><input type="radio" name="q3" value="C"> (C) 取「內」口中：音ㄋㄟˋ，指裡面。</label>
+        <label><input type="radio" name="q3" value="D"> (D) 「齧」破即吐之：音ㄋㄧㄝˋ，指捏碎。</label>
+        <div class="exp-txt">【解析】答案為 (A)。(B) 蹍音ㄋㄧㄢˇ，踩踏；(C) 內音ㄋㄚˋ，放入；(D) 齧音ㄋㄧㄝˋ，咬。</div>
+      </div>
+      <div class="q-block" data-ans="D">
+        <div><strong>4. 關於〈坦腹東床〉的字詞與代詞分析，下列何者「正確」？</strong></div>
+        <label><input type="radio" name="q4" value="A"> (A) 「丞相語郗信」的「信」，是指王丞相寫的回信。</label>
+        <label><input type="radio" name="q4" value="B"> (B) 「任意選之」的「之」，是指東廂房裡的書法作品。</label>
+        <label><input type="radio" name="q4" value="C"> (C) 「訪之，乃是逸少」的「之」，是指郗太尉的門生。</label>
+        <label><input type="radio" name="q4" value="D"> (D) 「因嫁女與焉」的「焉」，是指前面提到的王逸少。</label>
+        <div class="exp-txt">【解析】答案為 (D)。(A) 信指使者；(B) 之指王家諸郎；(C) 之指在東床上坦腹臥的逸少。</div>
+      </div>
+      <div class="q-block" data-ans="B">
+        <div><strong>5. 《王藍田食雞子》一文中，作者主要是透過哪一種寫作手法來凸顯人物性格？</strong></div>
+        <label><input type="radio" name="q5" value="A"> (A) 透過細膩的內心獨白，剖析人物的焦慮。</label>
+        <label><input type="radio" name="q5" value="B"> (B) 透過一連串誇張動作，展現人物的急躁。</label>
+        <label><input type="radio" name="q5" value="C"> (C) 透過激烈的言語辯論，呈現人物的機智。</label>
+        <label><input type="radio" name="q5" value="D"> (D) 透過詳實的環境描寫，襯托人物的孤獨。</label>
+        <div class="exp-txt">【解析】答案為 (B)。文中以「刺、擲、蹍、取、內、齧、吐」等誇張動作刻畫急躁。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>6. 王羲之笑說：「使安期有此性，猶當無一豪可論，況藍田耶？」這句話的意思為何？</strong></div>
+        <label><input type="radio" name="q6" value="A"> (A) 讚美王安期教子有方，虎父無犬子。</label>
+        <label><input type="radio" name="q6" value="B"> (B) 認為王藍田比父親王安期更加穩重。</label>
+        <label><input type="radio" name="q6" value="C"> (C) 譏諷王藍田遠不如父親安期那般賢能。</label>
+        <label><input type="radio" name="q6" value="D"> (D) 感嘆安期父子兩人都同樣性急且魯莽。</label>
+        <div class="exp-txt">【解析】答案為 (C)。連名聲好的安期若有此脾氣都無可取，何況王藍田呢？</div>
+      </div>
+      <div class="q-block" data-ans="A">
+        <div><strong>7. 下列魏晉名士與其「形象特色」的配對，何者「正確」？</strong></div>
+        <label><input type="radio" name="q7" value="A"> (A) 郝隆七月七日赤身坦腹躺太陽下 ── 不隨流俗。</label>
+        <label><input type="radio" name="q7" value="B"> (B) 王戎賣李子前先把李核鑽個洞 ── 眼光獨特。</label>
+        <label><input type="radio" name="q7" value="C"> (C) 孔融反駁陳韙小時了了的言論 ── 吝嗇小氣。</label>
+        <label><input type="radio" name="q7" value="D"> (D) 王藍田質疑王導說話未必全對 ── 聰慧機靈。</label>
+        <div class="exp-txt">【解析】答案為 (A)。(B) 王戎吝嗇小氣；(C) 孔融聰慧機靈；(D) 王藍田不隨聲附和。</div>
+      </div>
+      <div class="q-block" data-ans="D">
+        <div><strong>8. 下列成語皆出自《世說新語》，何者的解釋與使用情境「不恰當」？</strong></div>
+        <label><input type="radio" name="q8" value="A"> (A) 東床快婿：用來稱讚別人女婿才貌出眾。</label>
+        <label><input type="radio" name="q8" value="B"> (B) 自慚形穢：比喻因不如別人而感到羞愧。</label>
+        <label><input type="radio" name="q8" value="C"> (C) 擲果盈車：用來形容男子容貌極為英俊。</label>
+        <label><input type="radio" name="q8" value="D"> (D) 小時了了：用來讚美少年長大必成大器。</label>
+        <div class="exp-txt">【解析】答案為 (D)。「小時了了，大未必佳」帶戲謔語氣，不可用來讚美長大必成大器。</div>
+      </div>
+      <div class="q-block" data-ans="B">
+        <div><strong>9. 關於〈坦腹東床〉與〈王藍田食雞子〉兩則故事的情節理解，下列何者「正確」？</strong></div>
+        <label><input type="radio" name="q9" value="A"> (A) 郗太尉親自到王家挑選女婿，最後看中王羲之。</label>
+        <label><input type="radio" name="q9" value="B"> (B) 王藍田先用筷子刺蛋、再以木屐踩蛋，最後咬破吐出。</label>
+        <label><input type="radio" name="q9" value="C"> (C) 王家諸郎聽聞來覓婿都十分隨意，唯有王羲之最拘謹。</label>
+        <label><input type="radio" name="q9" value="D"> (D) 王藍田吃雞蛋時不小心打翻湯
