@@ -5,95 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>八上國文自學選文一：《世說新語》選</title>
 <style>
-  body { background:#FAF9F5; color:#222; margin:0; font-family:"PingFang TC","Microsoft JhengHei",sans-serif; line-height:1.8; }
-  .header { background:#1E5641; color:#fff; padding:18px 14px 0; text-align:center; }
-  .header h1 { margin:0 0 4px; font-size:1.35rem; }
-  .header p { margin:0 0 14px; font-size:0.9rem; opacity:0.9; }
-  .tabs { display:flex; max-width:880px; margin:0 auto; gap:6px; }
-  .tab { flex:1; padding:12px 6px; border:none; border-radius:10px 10px 0 0; background:rgba(255,255,255,0.22); color:#fff; font-weight:bold; font-size:0.95rem; cursor:pointer; }
-  .tab.active { background:#FAF9F5; color:#1E5641; }
-  .wrap { max-width:880px; margin:20px auto 50px; padding:0 16px; }
-  .panel { display:none; }
-  .panel.active { display:block; }
-  .card { background:#fff; border:1px solid #E2DFD5; border-radius:12px; padding:22px; margin-bottom:20px; }
-  .card h2 { margin:0 0 10px; color:#1E5641; font-size:1.3rem; }
-  .guide-btn { width:100%; text-align:left; background:#F8F7F2; border:1px solid #E2DFD5; border-radius:8px; padding:12px 15px; font-size:1rem; font-weight:bold; color:#1E5641; cursor:pointer; margin-top:8px; }
-  .guide-body { display:none; padding:12px 15px; border:1px solid #E2DFD5; border-top:none; border-radius:0 0 8px 8px; }
-  .guide-body.open { display:block; }
-  .poem-title { font-size:1.6rem; font-weight:bold; margin:0 0 6px; color:#1A2421; }
-  .meta { font-size:0.92rem; color:#444; margin:0 0 6px; }
-  .hint { font-size:0.88rem; color:#666; margin:0 0 14px; }
-  .text-box { background:#F1F6F3; border-left:4px solid #1E5641; padding:18px; font-size:1.3rem; line-height:2.3; margin-bottom:14px; }
-  .text-box p { margin:0 0 8px; }
-  .text-box p:last-child { margin:0; }
-  .kw { display:inline-block; border:1.5px solid #3B7A61; background:#fff; color:#1E5641; border-radius:7px; padding:0 6px; margin:0 2px; line-height:1.5; cursor:pointer; font-size:inherit; }
-  .kw.on { background:#1E5641; color:#fff; }
-  .gloss { background:#F6EED6; color:#4A3B18; border-radius:8px; padding:12px 16px; margin-bottom:14px; font-size:1rem; }
-  .trans-btn { background:none; border:none; color:#1E5641; font-weight:bold; font-size:0.98rem; cursor:pointer; padding:4px 0; }
-  .trans-box { display:none; background:#F8F7F2; border:1px solid #E2DFD5; border-radius:8px; padding:14px 16px; margin-top:8px; }
-  .trans-box.open { display:block; }
-  .next-btn { background:#1E5641; color:#fff; border:none; padding:11px 20px; border-radius:8px; font-size:0.98rem; font-weight:bold; cursor:pointer; margin-top:12px; }
-  .q-item { margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #ECE9E0; }
-  .q-title { font-weight:bold; margin-bottom:8px; }
-  .q-item label { display:block; padding:8px 12px; border:1px solid #DCD9CE; border-radius:7px; margin-bottom:6px; cursor:pointer; }
-  .exp { display:none; margin-top:8px; padding:10px 12px; border-radius:7px; font-size:0.92rem; }
-  .exp.ok { display:block; background:#E5F5EC; color:#1A5236; }
-  .exp.no { display:block; background:#FDECEA; color:#8A1F17; }
-  .submit-btn { width:100%; padding:14px; background:#B85D3B; color:#fff; border:none; border-radius:8px; font-size:1.1rem; font-weight:bold; cursor:pointer; }
-  .score-bar { display:none; background:#1E5641; color:#fff; padding:16px; border-radius:10px; text-align:center; margin-bottom:18px; font-weight:bold; font-size:1.15rem; }
+  body {
+    background-color: #FAF9F5;
+    color: #222222;
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.8;
+  }
+  .top-box {
+    background-color: #1E5641;
+    color: #FFFFFF;
+    padding: 18px 14px 14px;
+    text-align: center;
+  }
+  .top-box h1 {
+    margin: 0 0 4px 0;
+    font-size: 1.35rem;
+  }
+  .top-box p {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+  }
+  .tab-row {
+    display: flex;
+    gap: 8px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 11px 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+    background-color: #2E7258;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  .tab-btn.active {
+    background-color: #F6EED6;
+    color: #1E5641;
+  }
+  .container {
+    max-width: 860px;
+    margin: 20px auto 50px;
+    padding: 0 14px;
+  }
+  .panel {
+    display: none;
+  }
+  .panel.active {
+    display: block;
+  }
+  .card {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD9CE;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .title-lg {
+    font-size: 1.55rem;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+  }
+  .sub-txt {
+    font-size: 0.92rem;
+    color: #444444;
+    margin: 0 0 6px 0;
+  }
+  .hint-txt {
+    font-size: 0.88rem;
+    color: #666666;
+    margin: 0 0 14px 0;
+  }
+  .poem-area {
+    background-color: #F1F6F3;
+    border-left: 4px solid #1E5641;
+    padding: 16px;
+    font-size: 1.25rem;
+    line-height: 2.3;
+    margin-bottom: 12px;
+  }
+  .poem-area p {
+    margin: 0 0 8px 0;
+  }
+  .poem-area p:last-child {
+    margin-bottom: 0;
+  }
+  .kw {
+    display: inline-block;
+    border: 1.5px solid #3B7A61;
+    background-color: #FFFFFF;
+    color: #1E5641;
+    border-radius: 6px;
+    padding: 0 6px;
+    margin: 0 2px;
+    line-height: 1.5;
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+  .kw.on {
+    background-color: #1E5641;
+    color: #FFFFFF;
+  }
+  .gloss-box {
+    background-color: #F6EED6;
+    color: #4A3B18;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  .action-btn {
+    background-color: #1E5641;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 14px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .trans-box {
+    display: none;
+    background-color: #F8F7F2;
+    border: 1px solid #DDD9CE;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-size: 0.98rem;
+  }
+  .trans-box.show {
+    display: block;
+  }
+  .guide-box {
+    display: none;
+    background-color: #F8F7F2;
+    border: 1px solid #DDD9CE;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+  .guide-box.show {
+    display: block;
+  }
+  .q-block {
+    border-bottom: 1px solid #EAE6DC;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+  }
+  .q-block label {
+    display: block;
+    padding: 7px 10px;
+    border: 1px solid #DDD9CE;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  .exp-txt {
+    display: none;
+    margin-top: 8px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+  }
+  .exp-txt.ok {
+    display: block;
+    background-color: #E5F5EC;
+    color: #1A5236;
+  }
+  .exp-txt.no {
+    display: block;
+    background-color: #FDECEA;
+    color: #8A1F17;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 13px;
+    background-color: #B85D3B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .score-box {
+    display: none;
+    background-color: #1E5641;
+    color: #FFFFFF;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
+<div class="top-box">
   <h1>六朝名士畫廊——《世說新語》選</h1>
-  <p>八年級國文自學選文一 ｜ 自學語譯與隨堂測驗</p>
-  <div class="tabs">
-    <button type="button" class="tab active" id="t1" onclick="goTab(1)">① 經典導讀 (5分)</button>
-    <button type="button" class="tab" id="t2" onclick="goTab(2)">② 點詞語譯與抄寫 (25分)</button>
-    <button type="button" class="tab" id="t3" onclick="goTab(3)">③ 文意小測驗 10題 (15分)</button>
+  <p>八年級國文自學選文一</p>
+  <div class="tab-row">
+    <button type="button" class="tab-btn active" id="btn1" onclick="switchTab(1)">① 經典導讀</button>
+    <button type="button" class="tab-btn" id="btn2" onclick="switchTab(2)">② 點詞語譯與抄寫</button>
+    <button type="button" class="tab-btn" id="btn3" onclick="switchTab(3)">③ 文意小測驗 10題</button>
   </div>
 </div>
 
-<div class="wrap">
+<div class="container">
   <!-- 分頁1 -->
   <div class="panel active" id="p1">
     <div class="card">
-      <h2>《世說新語》小檔案（課本 P.166）</h2>
-      <p>● <strong>文體類別：</strong>漢魏六朝筆記小說，屬<strong>志人小說</strong>代表。</p>
-      <p>● <strong>編撰作者：</strong>南朝劉宋<strong>劉義慶</strong>召集文士合力編撰，全書共<strong>三十六類</strong>。</p>
-      <p style="margin-bottom:0;">● <strong>內容特色：</strong>記載東漢至東晉名士言行軼聞，文字簡潔精鍊，善用對比、譬喻與誇飾。</p>
+      <div class="title-lg">《世說新語》小檔案（課本 P.166）</div>
+      <p>● 文體類別：漢魏六朝筆記小說，屬<strong>志人小說</strong>代表。</p>
+      <p>● 編撰作者：南朝劉宋<strong>劉義慶</strong>召集文士合力編撰，全書共<strong>三十六類</strong>。</p>
+      <p>● 內容特色：記載東漢至東晉名士言行軼聞，文字簡潔精鍊，善用對比、譬喻、誇飾。</p>
     </div>
 
     <div class="card">
-      <h2>六朝名士四大風貌（點擊展開）</h2>
-      <button type="button" class="guide-btn" onclick="togGuide(this)">一、美男當道的世代（容止篇） ▼</button>
-      <div class="guide-body open">
-        <p><strong>1. 潘安（擲果盈車）：</strong>容貌英俊，出門時婦女爭相丟水果進車子表達愛慕。</p>
-        <p><strong>2. 左思（東施效顰）：</strong>寫《三都賦》造成「洛陽紙貴」，因長相醜陋學潘安逛街卻被吐口水。</p>
-        <p style="margin-bottom:0;"><strong>3. 王濟與衛玠（自慚形穢）：</strong>王濟雖俊美，但在外甥衛玠旁就自覺相貌醜陋。</p>
+      <div class="title-lg">六朝名士四大風貌</div>
+
+      <button type="button" class="action-btn" onclick="togBox('gb1')">一、美男當道的世代（容止篇）</button>
+      <div class="guide-box show" id="gb1">
+        <p>1. 潘安（擲果盈車）：容貌英俊，出門時婦女爭相丟水果進車子表達愛慕。</p>
+        <p>2. 左思（東施效顰）：寫《三都賦》造成「洛陽紙貴」，因長相醜陋學潘安逛街卻被吐口水。</p>
+        <p>3. 王濟與衛玠（自慚形穢）：王濟雖俊美，但在外甥衛玠旁就自覺相貌醜陋。</p>
       </div>
 
-      <button type="button" class="guide-btn" onclick="togGuide(this)">二、舉止瀟灑的風采（排調篇、雅量篇） ▼</button>
-      <div class="guide-body">
-        <p><strong>1. 郝隆晒書：</strong>七月七日富人晒書炫富，郝隆脫衣躺太陽下笑稱「在晒肚子裡的書」。</p>
-        <p style="margin-bottom:0;"><strong>2. 王羲之（坦腹東床）：</strong>王家子弟聽聞挑女婿都拘謹裝模作樣，唯獨王羲之在東床露肚皮躺臥而獲選。</p>
+      <button type="button" class="action-btn" onclick="togBox('gb2')">二、舉止瀟灑的風采（排調篇、雅量篇）</button>
+      <div class="guide-box" id="gb2">
+        <p>1. 郝隆晒書：七月七日富人晒書炫富，郝隆脫衣躺太陽下笑稱「在晒肚子裡的書」。</p>
+        <p>2. 王羲之（坦腹東床）：王家子弟聽聞挑女婿都拘謹裝模作樣，唯獨王羲之在東床露肚皮躺臥而獲選。</p>
       </div>
 
-      <button type="button" class="guide-btn" onclick="togGuide(this)">三、個人特質的圖象（儉嗇篇、忿狷篇、賞譽篇） ▼</button>
-      <div class="guide-body">
-        <p><strong>1. 王戎（吝嗇）：</strong>家財萬貫卻極度小氣，賣李子前怕別人拿種子去種，先把李核鑽洞。</p>
-        <p style="margin-bottom:0;"><strong>2. 王藍田（急躁與直率）：</strong>吃雞蛋急躁暴怒；但任王導屬下時敢直言不諱，不隨聲附和。</p>
+      <button type="button" class="action-btn" onclick="togBox('gb3')">三、個人特質的圖象（儉嗇篇、忿狷篇、賞譽篇）</button>
+      <div class="guide-box" id="gb3">
+        <p>1. 王戎（吝嗇）：家財萬貫卻極度小氣，賣李子前怕別人拿種子去種，先把李核鑽洞。</p>
+        <p>2. 王藍田（急躁與直率）：吃雞蛋急躁暴怒；但任王導屬下時敢直言不諱，不隨聲附和。</p>
       </div>
 
-      <button type="button" class="guide-btn" onclick="togGuide(this)">四、靈敏巧對的機智（言語篇） ▼</button>
-      <div class="guide-body">
-        <p><strong>1. 孔融（小時了了）：</strong>面對陳韙嘲諷「小時聰明長大未必有成就」，立刻反擊「想必您小時候一定很聰明」。</p>
-        <p style="margin-bottom:0;"><strong>2. 鍾毓、鍾會兄弟：</strong>面見曹丕時，哥哥緊張流汗「汗出如漿」，弟弟回答「汗不敢出」。</p>
+      <button type="button" class="action-btn" onclick="togBox('gb4')">四、靈敏巧對的機智（言語篇）</button>
+      <div class="guide-box" id="gb4">
+        <p>1. 孔融（小時了了）：面對陳韙嘲諷「小時聰明長大未必有成就」，立刻反擊「想必您小時候一定很聰明」。</p>
+        <p>2. 鍾毓、鍾會兄弟：面見曹丕時，哥哥緊張流汗「汗出如漿」，弟弟回答「汗不敢出」。</p>
       </div>
 
-      <div style="text-align:right;">
-        <button type="button" class="next-btn" onclick="goTab(2)">下一步：前往點詞語譯與抄寫 ➔</button>
+      <div style="margin-top:16px;">
+        <button type="button" class="action-btn" onclick="switchTab(2)">下一步：前往點詞語譯與抄寫 ➔</button>
       </div>
     </div>
   </div>
@@ -101,5 +266,183 @@
   <!-- 分頁2 -->
   <div class="panel" id="p2">
     <div class="card">
-      <div class="poem-title">坦腹東床</div>
-      <p class="meta">《世
+      <div class="title-lg">坦腹東床</div>
+      <p class="sub-txt">《世說新語・雅量》 ｜ 讀完先回答三問：誰派人來？門生看見什麼？最後選了誰？</p>
+      <p class="hint-txt">先讀原文，遇到不懂的詞可以點開注釋（課本 P.169）。</p>
+      <div class="poem-area">
+        <p>郗太尉在京口，<button type="button" class="kw" onclick="pickKw('g1',this,'遣（ㄑㄧㄢˇ）：派遣、差使。')">遣</button>門生與王丞相<button type="button" class="kw" onclick="pickKw('g1',this,'書：信件、書信。')">書</button>，求女婿。丞相<button type="button" class="kw" onclick="pickKw('g1',this,'語（ㄩˋ）：告訴、對……說。')">語</button><button type="button" class="kw" onclick="pickKw('g1',this,'郗（ㄔ）信：郗太尉派來的使者。「信」指傳送信件的人。')">郗信</button>：「君往<button type="button" class="kw" onclick="pickKw('g1',this,'東廂：東邊的廂房。')">東廂</button>，任意選之。」</p>
+        <p>門生歸，<button type="button" class="kw" onclick="pickKw('g1',this,'白：稟報、報告。')">白</button>郗曰：「王家<button type="button" class="kw" onclick="pickKw('g1',this,'諸郎：各位年輕子弟。「諸」是眾、各的意思。')">諸郎</button>，亦皆可嘉，聞來覓婿，<button type="button" class="kw" onclick="pickKw('g1',this,'咸（ㄒㄧㄢˊ）：都、皆。')">咸</button>自<button type="button" class="kw" onclick="pickKw('g1',this,'矜（ㄐㄧㄣ）持：拘謹不自在。')">矜持</button>；唯有一郎，在東床上<button type="button" class="kw" onclick="pickKw('g1',this,'坦腹：露出肚皮。「坦」是露出。')">坦腹</button>臥，如不聞。」</p>
+        <p>郗公云：「正此好！」<button type="button" class="kw" onclick="pickKw('g1',this,'訪之：打聽這個人。「之」代指後面的逸少（王羲之）。')">訪之</button>，乃是<button type="button" class="kw" onclick="pickKw('g1',this,'逸少：王羲之的字。東晉著名書法家。')">逸少</button>。<button type="button" class="kw" onclick="pickKw('g1',this,'因嫁女與焉：於是就把女兒嫁給了他。「焉」代指前面的逸少。')">因嫁女與焉</button>。</p>
+      </div>
+      <div class="gloss-box" id="g1">點一下原文標示的詞語，這裡會顯示解釋。</div>
+      <button type="button" class="action-btn" onclick="togBox('tr1')">▸ 看分段白話（抄寫於課本 P.169）</button>
+      <div class="trans-box" id="tr1">
+        <p><strong>第一段：</strong>郗太尉在京口時，派遣門生送信給丞相王導，信中想在王家挑選一位女婿。王丞相告訴郗太尉的使者：「你到東廂房去，隨意挑選吧！」</p>
+        <p><strong>第二段：</strong>門生回去後，向郗太尉報告說：「王家的年輕子弟們也都很不錯，聽說有人來挑女婿，個個都表現得拘謹莊重；只有一位年輕人，在東邊的床上露出肚皮躺著，好像完全沒聽見這回事一樣。」</p>
+        <p><strong>第三段：</strong>郗太尉說：「正是這個人最好！」派人打聽之後，原來他就是王羲之。於是就把女兒嫁給了他。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title-lg">王藍田食雞子</div>
+      <p class="sub-txt">《世說新語・忿狷》 ｜ 讀完先圈出原文動作：刺、擲、跟、取、內、齧、吐。</p>
+      <p class="hint-txt">先讀原文，遇到不懂的詞可以點開注釋（課本 P.171）。</p>
+      <div class="poem-area">
+        <p><button type="button" class="kw" onclick="pickKw('g2',this,'王藍田：指王述，東晉人，封藍田侯，故稱王藍田。')">王藍田</button>性急，<button type="button" class="kw" onclick="pickKw('g2',this,'嘗（ㄔㄤˊ）：曾經。')">嘗</button>食<button type="button" class="kw" onclick="pickKw('g2',this,'雞子：雞蛋。')">雞子</button>，以<button type="button" class="kw" onclick="pickKw('g2',this,'筯（ㄓㄨˋ）：同「箸」，筷子。')">筯</button>刺之，不得，便大怒，<button type="button" class="kw" onclick="pickKw('g2',this,'舉以擲（ㄓˊ）地：拿起雞蛋扔在地上。')">舉以擲地</button>。</p>
+        <p>雞子於地<button type="button" class="kw" onclick="pickKw('g2',this,'圓轉未止：在地上滾動轉個不停。')">圓轉未止</button>，<button type="button" class="kw" onclick="pickKw('g2',this,'仍：於是。')">仍</button>下地以<button type="button" class="kw" onclick="pickKw('g2',this,'屐（ㄐㄧ）齒：木屐底部凸出像牙齒的部分。')">屐齒</button><button type="button" class="kw" onclick="pickKw('g2',this,'跟（ㄋㄧㄢˇ）：踩踏。')">跟</button>之，又不得，<button type="button" class="kw" onclick="pickKw('g2',this,'瞋（ㄔㄣ）甚：非常憤怒。瞋，睜大眼睛發怒。')">瞋甚</button>。復於地取<button type="button" class="kw" onclick="pickKw('g2',this,'內（ㄋㄚˋ）：同「納」，放入。')">內</button>口中，<button type="button" class="kw" onclick="pickKw('g2',this,'齧（ㄋㄧㄝˋ）：咬。')">齧</button>破即吐之。</p>
+        <p><button type="button" class="kw" onclick="pickKw('g2',this,'王右軍：指王羲之，曾任右軍將軍。')">王右軍</button>聞而大笑，曰：「<button type="button" class="kw" onclick="pickKw('g2',this,'使：假使。')">使</button><button type="button" class="kw" onclick="pickKw('g2',this,'安期：王承，王藍田的父親，為人誠信有清譽。')">安期</button>有此性，猶當無<button type="button" class="kw" onclick="pickKw('g2',this,'一豪：同「一毫」，比喻事物的極微小。')">一豪</button>可論，況藍田<button type="button" class="kw" onclick="pickKw('g2',this,'耶（ㄧㄝˊ）：同「邪」，語末疑問助詞，呢。')">耶</button>？」</p>
+      </div>
+      <div class="gloss-box" id="g2">點一下原文標示的詞語，這裡會顯示解釋。</div>
+      <button type="button" class="action-btn" onclick="togBox('tr2')">▸ 看分段白話（抄寫於課本 P.171）</button>
+      <div class="trans-box" id="tr2">
+        <p><strong>第一段：</strong>王藍田性情急躁，曾經在吃雞蛋時，用筷子去刺它，沒有刺到，就非常生氣，拿起雞蛋扔在地上。</p>
+        <p><strong>第二段：</strong>雞蛋在地上滾動轉個不停，他於是走下坐榻用木屐去踩踏它，又沒踩到，變得更加憤怒。他又從地上把雞蛋撿起來放入口中，用力咬破後立刻吐出來。</p>
+        <p><strong>第三段：</strong>王羲之聽說這件事後大笑說：「假使他父親王安期有這種急躁脾氣，尚且沒有一絲一毫可取之處了，更何況是王藍田呢？」</p>
+      </div>
+      <div style="margin-top:16px;">
+        <button type="button" class="action-btn" onclick="switchTab(3)">抄寫完成！前往文意小測驗（10題） ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分頁3 -->
+  <div class="panel" id="p3">
+    <div class="score-box" id="scoreBox"></div>
+    <div class="card">
+      <div class="title-lg">《世說新語》隨堂小測驗（共 10 題，每題 10 分）</div>
+      <div class="q-block" data-ans="B">
+        <div><strong>1. 下列關於《世說新語》一書的說明，何者「錯誤」？</strong></div>
+        <label><input type="radio" name="q1" value="A"> (A) 屬於漢魏六朝筆記小說，是中國志人小說的代表作。</label>
+        <label><input type="radio" name="q1" value="B"> (B) 由南朝劉義慶獨力撰寫完成，依朝代先後順序編排。</label>
+        <label><input type="radio" name="q1" value="C"> (C) 全書分為三十六類，主要記載東漢至東晉名士言行。</label>
+        <label><input type="radio" name="q1" value="D"> (D) 文字簡潔精鍊且故事趣味橫生，對後世小說影響深遠。</label>
+        <div class="exp-txt">【解析】答案為 (B)。由劉義慶召集文士合力編撰，且按性質分類（共三十六類）。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>2. 郗太尉決定將女兒嫁給王羲之，主要是欣賞他的哪種特質？</strong></div>
+        <label><input type="radio" name="q2" value="A"> (A) 飽讀詩書，才華洋溢。</label>
+        <label><input type="radio" name="q2" value="B"> (B) 體格強健，不畏寒暑。</label>
+        <label><input type="radio" name="q2" value="C"> (C) 本性率真，毫不做作。</label>
+        <label><input type="radio" name="q2" value="D"> (D) 孤芳自賞，特立獨行。</label>
+        <div class="exp-txt">【解析】答案為 (C)。唯有王羲之「坦腹臥，如不聞」，展現率真本性。</div>
+      </div>
+      <div class="q-block" data-ans="A">
+        <div><strong>3. 下列哪一個字詞的字音與字義配對，完全「正確」？</strong></div>
+        <label><input type="radio" name="q3" value="A"> (A) 以「筯」刺之：音ㄓㄨˋ，指筷子。</label>
+        <label><input type="radio" name="q3" value="B"> (B) 以屐齒「跟」之：音ㄍㄣ，指跟隨。</label>
+        <label><input type="radio" name="q3" value="C"> (C) 取「內」口中：音ㄋㄟˋ，指裡面。</label>
+        <label><input type="radio" name="q3" value="D"> (D) 「齧」破即吐之：音ㄋㄧㄝˋ，指捏碎。</label>
+        <div class="exp-txt">【解析】答案為 (A)。(B) 跟音ㄋㄧㄢˇ，踩踏；(C) 內音ㄋㄚˋ，放入；(D) 齧音ㄋㄧㄝˋ，咬。</div>
+      </div>
+      <div class="q-block" data-ans="D">
+        <div><strong>4. 關於〈坦腹東床〉的字詞與代詞分析，下列何者「正確」？</strong></div>
+        <label><input type="radio" name="q4" value="A"> (A) 「丞相語郗信」的「信」，是指王丞相寫的回信。</label>
+        <label><input type="radio" name="q4" value="B"> (B) 「任意選之」的「之」，是指東廂房裡的書法作品。</label>
+        <label><input type="radio" name="q4" value="C"> (C) 「訪之，乃是逸少」的「之」，是指郗太尉的門生。</label>
+        <label><input type="radio" name="q4" value="D"> (D) 「因嫁女與焉」的「焉」，是指前面提到的王逸少。</label>
+        <div class="exp-txt">【解析】答案為 (D)。(A) 信指使者；(B) 之指王家諸郎；(C) 之指在東床上坦腹臥的逸少。</div>
+      </div>
+      <div class="q-block" data-ans="B">
+        <div><strong>5. 《王藍田食雞子》一文中，作者主要是透過哪一種寫作手法來凸顯人物性格？</strong></div>
+        <label><input type="radio" name="q5" value="A"> (A) 透過細膩的內心獨白，剖析人物的焦慮。</label>
+        <label><input type="radio" name="q5" value="B"> (B) 透過一連串誇張動作，展現人物的急躁。</label>
+        <label><input type="radio" name="q5" value="C"> (C) 透過激烈的言語辯論，呈現人物的機智。</label>
+        <label><input type="radio" name="q5" value="D"> (D) 透過詳實的環境描寫，襯托人物的孤獨。</label>
+        <div class="exp-txt">【解析】答案為 (B)。文中以「刺、擲、跟、取、內、齧、吐」等誇張動作刻畫急躁。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>6. 王羲之笑說：「使安期有此性，猶當無一豪可論，況藍田耶？」這句話的意思為何？</strong></div>
+        <label><input type="radio" name="q6" value="A"> (A) 讚美王安期教子有方，虎父無犬子。</label>
+        <label><input type="radio" name="q6" value="B"> (B) 認為王藍田比父親王安期更加穩重。</label>
+        <label><input type="radio" name="q6" value="C"> (C) 譏諷王藍田遠不如父親安期那般賢能。</label>
+        <label><input type="radio" name="q6" value="D"> (D) 感嘆安期父子兩人都同樣性急且魯莽。</label>
+        <div class="exp-txt">【解析】答案為 (C)。連名聲好的安期若有此脾氣都無可取，何況王藍田呢？</div>
+      </div>
+      <div class="q-block" data-ans="A">
+        <div><strong>7. 下列魏晉名士與其「形象特色」的配對，何者「正確」？</strong></div>
+        <label><input type="radio" name="q7" value="A"> (A) 郝隆七月七日赤身坦腹躺太陽下 ── 不隨流俗。</label>
+        <label><input type="radio" name="q7" value="B"> (B) 王戎賣李子前先把李核鑽個洞 ── 眼光獨特。</label>
+        <label><input type="radio" name="q7" value="C"> (C) 孔融反駁陳韙小時了了的言論 ── 吝嗇小氣。</label>
+        <label><input type="radio" name="q7" value="D"> (D) 王藍田質疑王導說話未必全對 ── 聰慧機靈。</label>
+        <div class="exp-txt">【解析】答案為 (A)。(B) 王戎吝嗇小氣；(C) 孔融聰慧機靈；(D) 王藍田不隨聲附和。</div>
+      </div>
+      <div class="q-block" data-ans="D">
+        <div><strong>8. 下列成語皆出自《世說新語》，何者的解釋與使用情境「不恰當」？</strong></div>
+        <label><input type="radio" name="q8" value="A"> (A) 東床快婿：用來稱讚別人女婿才貌出眾。</label>
+        <label><input type="radio" name="q8" value="B"> (B) 自慚形穢：比喻因不如別人而感到羞愧。</label>
+        <label><input type="radio" name="q8" value="C"> (C) 擲果盈車：用來形容男子容貌極為英俊。</label>
+        <label><input type="radio" name="q8" value="D"> (D) 小時了了：用來讚美少年長大必成大器。</label>
+        <div class="exp-txt">【解析】答案為 (D)。「小時了了，大未必佳」帶戲謔語氣，不可用來讚美長大必成大器。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>9. 下列哪一則故事最能體現「臨場機智應對」？</strong></div>
+        <label><input type="radio" name="q9" value="A"> (A) 王戎在姪兒結婚時只送一件衣服，事後又討回。</label>
+        <label><input type="radio" name="q9" value="B"> (B) 王藍田因吃不到雞蛋，用木屐踩蛋又咬破吐出。</label>
+        <label><input type="radio" name="q9" value="C"> (C) 孔融面對陳韙的質疑，反問對方小時候是否聰明。</label>
+        <label><input type="radio" name="q9" value="D"> (D) 郗太尉派門生到東廂房，讓使者自己挑選女婿。</label>
+        <div class="exp-txt">【解析】答案為 (C)。孔融以機智妙語反擊陳韙。</div>
+      </div>
+      <div class="q-block" data-ans="C">
+        <div><strong>10. 關於《世說新語》的寫作特色，下列敘述何者「正確」？</strong></div>
+        <label><input type="radio" name="q10" value="A"> (A) 屬於嚴謹的史傳文學，所有情節皆經嚴格考證。</label>
+        <label><input type="radio" name="q10" value="B"> (B) 內容以神怪靈異為主，與《搜神記》屬於同類。</label>
+        <label><input type="radio" name="q10" value="C"> (C) 善用對比、譬喻與誇飾，讓名士形象躍然紙上。</label>
+        <label><input type="radio" name="q10" value="D"> (D) 每則故事篇幅冗長，偏向細膩描寫戰爭經過。</label>
+        <div class="exp-txt">【解析】答案為 (C)。《世說新語》是志人小說，篇幅精鍊，善用對比、譬喻與誇飾。</div>
+      </div>
+      <button type="button" class="submit-btn" onclick="scoreQuiz()">送出答案（查看 10 題成績與解析）</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(n) {
+  for (var i = 1; i <= 3; i++) {
+    document.getElementById('p' + i).className = (i === n) ? 'panel active' : 'panel';
+    document.getElementById('btn' + i).className = (i === n) ? 'tab-btn active' : 'tab-btn';
+  }
+}
+function togBox(id) {
+  var el = document.getElementById(id);
+  var has = el.className.indexOf('show') > -1;
+  el.className = el.className.replace(' show', '');
+  if (!has) el.className = el.className + ' show';
+}
+function pickKw(gid, el, txt) {
+  var card = el.parentNode.parentNode;
+  var kws = card.getElementsByClassName('kw');
+  for (var i = 0; i < kws.length; i++) {
+    kws[i].className = kws[i].className.replace(' on', '');
+  }
+  el.className = el.className + ' on';
+  document.getElementById(gid).innerHTML = '<strong>【' + el.innerText + '】</strong>' + txt;
+}
+function scoreQuiz() {
+  var qs = document.getElementsByClassName('q-block');
+  var total = 0, unans = 0;
+  for (var i = 0; i < qs.length; i++) {
+    var rs = document.getElementsByName('q' + (i + 1));
+    var picked = false;
+    for (var r = 0; r < rs.length; r++) if (rs[r].checked) picked = true;
+    if (!picked) unans++;
+  }
+  if (unans > 0) {
+    alert('還有 ' + unans + ' 題沒寫喔！');
+    return;
+  }
+  for (var j = 0; j < qs.length; j++) {
+    var ans = qs[j].getAttribute('data-ans');
+    var rs2 = document.getElementsByName('q' + (j + 1));
+    var val = '';
+    for (var r2 = 0; r2 < rs2.length; r2++) if (rs2[r2].checked) val = rs2[r2].value;
+    var exp = qs[j].getElementsByClassName('exp-txt')[0];
+    exp.className = (val === ans) ? 'exp-txt ok' : 'exp-txt no';
+    if (val === ans) total += 10;
+  }
+  var sb = document.getElementById('scoreBox');
+  sb.style.display = 'block';
+  sb.innerText = '測驗完成！本次得分：' + total + ' 分（每題 10 分）';
+}
+</script>
+</body>
+</html>
